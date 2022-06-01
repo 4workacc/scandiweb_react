@@ -1,6 +1,8 @@
 import { Component } from "react";
-import BasketCurrency from "../Basket/BasketCurrency";
-import BasketIcon from "../Basket/BasketIcon";
+import BasketCurrency from "./BasketCurrency";
+import BasketIcon from "./BasketIcon";
+
+
 import "./styles.css";
 
 class NavBar extends Component{
