@@ -1,0 +1,21 @@
+.BasketIcon {
+    width: 33px;
+    height: 28px;
+}
+.BasketIcon_img {
+    width: 20px;
+    height: 20px;
+    background-image: url("../../../assets/imgs/basket.svg");
+    background-size: cover;
+}
+.BasketIcon_Counter {
+    background-color: black;
+    color: white;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-top: -30px;
+    margin-left: 12px;
+    font-size: 13px;
+}

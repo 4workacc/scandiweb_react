@@ -1,0 +1,31 @@
+.Navbar {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.NavBar_Cathegories {
+    width: 202px;
+    display: flex;
+    flex: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.NavBar_Cathegories li {
+    text-decoration: none;
+    text-transform: uppercase;
+    list-style: none;
+    font-family: Raleway;
+    font-style: "bold";
+    font-size: 16px;
+    line-height: 19.2px;    
+    text-align: center;
+}    
+.NavBar_GUI {
+    width: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
