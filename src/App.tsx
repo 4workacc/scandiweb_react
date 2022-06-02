@@ -4,6 +4,7 @@ import BasketPage from './components/BasketPage';
 import NavBar from './components/NavBar';
 import Products from './components/Products';
 import ProductPage from './components/ProductPage';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 type TProps = {
 
@@ -12,21 +13,28 @@ type TProps = {
 type TState = {
   curPage: string;
 }
+
+const client = new ApolloClient({
+  uri: "https://localhost:4000",
+  cache: new InMemoryCache()
+})
 class App extends Component<TProps, TState> {
   state: TState = {
     curPage: "products"
   }
   componentDidMount(){
-    alert("ONLINE");
+    
   }
   render(){
     return (
-      <div className="App">
-        <NavBar />
-        { this.state.curPage === "products" && <Products /> }
-        { this.state.curPage === "product" && <ProductPage /> }
-        { this.state.curPage === "basket" && <BasketPage /> }
-      </div>
+      <ApolloProvider client={client}>
+        <div className="App">
+          <NavBar />
+          { this.state.curPage === "products" && <Products /> }
+          { this.state.curPage === "product" && <ProductPage /> }
+          { this.state.curPage === "basket" && <BasketPage /> }
+        </div>
+      </ApolloProvider>
     )
   } 
 }
