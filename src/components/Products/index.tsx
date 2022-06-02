@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { IProduct } from "../../types";
-import Product from "../Product";
+import Product from "./Product";
 import CartMini from "./CartMini";
 import "./styles.css";
 

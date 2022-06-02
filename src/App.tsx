@@ -16,6 +16,9 @@ class App extends Component<TProps, TState> {
   state: TState = {
     curPage: "products"
   }
+  componentDidMount(){
+    alert("ONLINE");
+  }
   render(){
     return (
       <div className="App">
