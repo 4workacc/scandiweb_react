@@ -5,38 +5,35 @@ import NavBar from './components/NavBar';
 import Products from './components/Products';
 import ProductPage from './components/ProductPage';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { IStore } from './types';
+import { connect } from 'react-redux';
 
 type TProps = {
-
-}
-
-type TState = {
-  curPage: string;
+  curPage?: string;
 }
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/",
   cache: new InMemoryCache()
 })
-class App extends Component<TProps, TState> {
-  state: TState = {
-    curPage: "products"
-  }
-  componentDidMount(){
-    
-  }
+class App extends Component<TProps> {
   render(){
     return (
       <ApolloProvider client={client}>
+        { this.props.curPage }
         <div className="App">
           <NavBar />
-          { this.state.curPage === "products" && <Products client = {client}/> }
-          { this.state.curPage === "product" && <ProductPage /> }
-          { this.state.curPage === "basket" && <BasketPage /> }
+          { this.props.curPage === "products" && <Products client = {client}/> }
+          { this.props.curPage === "product" && <ProductPage /> }
+          { this.props.curPage === "basket" && <BasketPage /> }
         </div>
       </ApolloProvider>
     )
   } 
 }
 
-export default App;
+const mapStateToProps = (state: IStore) => ({
+  curPage: state.curPage
+})
+
+export default connect(mapStateToProps)(App);
