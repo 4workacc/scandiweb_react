@@ -1,14 +1,14 @@
 export interface IProduct {
-    id: number;
-    category: "women" | "men" | "kids";
+    id?: number;
+    category?: "women" | "men" | "kids";
     title: string;
     subtitle: string;
-    size: string[];
-    color: string[];
+    size?: string[];
+    color?: string[];
     price: number;
-    currency: "$" | "&";
+    currency?: "$" | "&";
     info: string;
-    imgs: [];
+    imgs?: [];
 }
 
 export interface IBuyItem {

@@ -15,7 +15,7 @@ type TState = {
 }
 
 const client = new ApolloClient({
-  uri: "https://localhost:4000",
+  uri: "http://localhost:4000/",
   cache: new InMemoryCache()
 })
 class App extends Component<TProps, TState> {
@@ -30,7 +30,7 @@ class App extends Component<TProps, TState> {
       <ApolloProvider client={client}>
         <div className="App">
           <NavBar />
-          { this.state.curPage === "products" && <Products /> }
+          { this.state.curPage === "products" && <Products client = {client}/> }
           { this.state.curPage === "product" && <ProductPage /> }
           { this.state.curPage === "basket" && <BasketPage /> }
         </div>
