@@ -1,5 +1,6 @@
 const initState: any = {
-    curPage: "products"
+    curPage: "products",
+    curCathegory: "women"
 }
 
 export default initState;

@@ -5,7 +5,8 @@ interface IProp {
     title: string,
     subtitle: string,
     price: number,
-    info: string
+    info: string,
+    id: number
 }
 
 class Product extends Component<IProp>{
