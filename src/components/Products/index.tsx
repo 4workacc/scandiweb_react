@@ -48,23 +48,23 @@ class Products extends Component<TProps, TState> {
        this.generateNewDisplayArr(this.state.products!, 1);
     }
     generateNewDisplayArr( products: IProduct[], step: number){
-        let newArr:any[] = [];
-        products.map ( (product: IProduct) => {
-            if ( product.category === this.props.curCathegory ) {
-            newArr.push(< Product 
-                            title={product.title}
-                            subtitle = {product.subtitle}
-                            price = {product.price}
-                            info = {product.info}                            
-                            key = {product.id}
-                            id = { product.id! }
-                            />)
-            }
-        });        
-        this.setState({
-            ...this.state,            
-            displayedArr: newArr,            
-        });
+        // let newArr:any[] = [];
+        // products.map ( (product: IProduct) => {
+        //     if ( product.category === this.props.curCathegory ) {
+        //     newArr.push(< Product 
+        //                     title={product.title}
+        //                     subtitle = {product.subtitle}
+        //                     price = {product.price}
+        //                     info = {product.info}                            
+        //                     key = {product.id}
+        //                     id = { product.id! }
+        //                     />)
+        //     }
+        // });        
+        // this.setState({
+        //     ...this.state,            
+        //     displayedArr: newArr,            
+        // });
         if (step === 0) {this.setState({products: products})};
     }
 
@@ -74,7 +74,18 @@ class Products extends Component<TProps, TState> {
                 { this.state.isShowCartMini && <CartMini />}
                 <h1 className="Products_CathegoryName">{this.props.curCathegory}</h1>               
                 <div className="Products_Cards">
-                    { this.state.displayedArr  }
+                    { this.state.products?.map( (product: IProduct) => {
+                        if ( product.category === this.props.curCathegory) {
+                            return (< Product 
+                                        title={product.title}
+                                        subtitle = {product.subtitle}
+                                        price = {product.price}
+                                        info = {product.info}                            
+                                        key = {product.id}
+                                        id = { product.id! }
+                                />)
+                        }
+                    }) }
                 </div>
             </div>
         )
