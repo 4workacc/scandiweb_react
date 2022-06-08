@@ -1,15 +1,24 @@
 import { Component } from "react";
+import { connect } from "react-redux";
+import {  IBasketProduct, IStore } from "../../../types";
 import "./styles.css";
 
-class BasketIcon extends Component {
+interface IProps {
+    basket?: IBasketProduct[] | []
+}
+class BasketIcon extends Component<IProps> {
     render(){
         return (
             <div className="BasketIcon">
                 <div className="BasketIcon_img"></div>
-                <p className="BasketIcon_Counter">1</p>
+                {this.props.basket!.length >0 &&<p className="BasketIcon_Counter">{this.props.basket!.length}</p>}
             </div>
         )
     }
 }
 
-export default BasketIcon;
+const mapStateToProps = (state: IStore) => ({
+    basket: state.basket
+})
+
+export default connect(mapStateToProps)(BasketIcon);

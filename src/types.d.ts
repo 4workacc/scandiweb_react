@@ -17,6 +17,14 @@ export interface IBuyItem {
     count: number;
 }
 
+export interface IBasketProduct{
+    productId: number,
+    size: string,
+    color: string,
+    img: string,
+    count: number
+}
+
 export interface IUserBuyList {
     tax: number;
     items: IBuyItem[] | null;
@@ -29,6 +37,7 @@ export interface IStore {
     displayProductList: IProduct[] | null;
     displayProductId: number | null;
     showMiniBasket: boolean;
+    basket: IBasketProduct[] | []
 }
 
 export enum ActionTypes {
