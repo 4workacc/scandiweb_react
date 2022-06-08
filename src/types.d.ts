@@ -9,6 +9,7 @@ export interface IProduct {
     currency?: "$" | "&";
     info: string;
     imgs?: [];
+    storeCount: number;
 }
 
 export interface IBuyItem {
@@ -26,7 +27,7 @@ export interface IStore {
     fullProductList: IProduct[] | null;
     curCathegory: "women" | "men" | "kids";
     displayProductList: IProduct[] | null;
-    displayProduct: IProduct | null;
+    displayProductId: number | null;
     showMiniBasket: boolean;
 }
 

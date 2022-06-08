@@ -5,8 +5,15 @@ const rootReducer = (state = initState, action: any) => {
         case "SELECT_CATHEGORY" : 
             return {
                 ...state,
-                curCathegory: action.payload
-            };           
+                curCathegory: action.payload,
+                curPage: "products"
+            };       
+        case "SHOW_PRODUCT" : 
+            return {
+                ...state,
+                curPage: "product",
+                displayProductId: action.payload
+            };        
         default: 
             return state
     }

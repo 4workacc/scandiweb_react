@@ -1,13 +1,22 @@
 import { Component } from "react";
+import { connect } from "react-redux";
+import { IStore } from "../../types";
 
-class ProductPage extends Component {
+interface IProps {
+    curProductId?: number| null
+}
+class ProductPage extends Component<IProps> {
     render() {
         return (
             <div className="ProductPage">
-                Produyct page
+                {"Product page" +this.props.curProductId}
             </div>
         )
     }
 }
 
-export default ProductPage;
+const mapStateToProps = (state: IStore) => ({
+    curProductId: state.displayProductId
+}) 
+
+export default connect(mapStateToProps)(ProductPage);
