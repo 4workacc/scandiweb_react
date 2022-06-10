@@ -3,12 +3,12 @@ export interface IProduct {
     category?: "women" | "men" | "kids";
     title: string;
     subtitle: string;
-    size?: string[];
-    color?: string[];
+    sizes?: string[];
+    colors?: string[];
     price: number;
-    currency?: "$" | "&";
+    currency?: "USD" | "EUR" | "GB" | "$";
     info: string;
-    imgs?: [];
+    imgs?: string[];
     storeCount: number;
 }
 

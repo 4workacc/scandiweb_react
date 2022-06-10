@@ -24,7 +24,7 @@ class App extends Component<TProps> {
         <div className="App">
           <NavBar />
           { this.props.curPage === "products" && <Products client = {client}/> }
-          { this.props.curPage === "product" && <ProductPage /> }
+          { this.props.curPage === "product" && <ProductPage client = {client} /> }
           { this.props.curPage === "basket" && <BasketPage /> }
         </div>
       </ApolloProvider>
