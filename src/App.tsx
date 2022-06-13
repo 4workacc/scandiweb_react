@@ -19,8 +19,7 @@ const client = new ApolloClient({
 class App extends Component<TProps> {
   render(){
     return (
-      <ApolloProvider client={client}>
-        { this.props.curPage }
+      <ApolloProvider client={client}>        
         <div className="App">
           <NavBar />
           { this.props.curPage === "products" && <Products client = {client}/> }

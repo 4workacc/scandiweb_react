@@ -10,21 +10,24 @@ interface IProp {
     info: string,
     id: number,
     inStore: string,
+    currency: string,
     showProduct?:(id: number) => void;
 }
 
 class Product extends Component<IProp>{
     render() {
         return (
-            <div className = {"Product " + this.props.inStore}>
-                <p>{this.props.id}</p>
-                <div>img</div>
-                <p>{this.props.title}</p>
-                <p>{this.props.subtitle}</p>
-                <p>{this.props.price}</p>
-                <p>{this.props.info}</p>
-                {this.props.inStore.length===0 && <div className = "ProductBuyButton" onClick = { ()=> this.props.showProduct!(this.props.id)}>
-
+            <div className = {"ProductCard " + this.props.inStore}>                
+                <div className="ProductCard_img"><img src={`../../../assets/imgs/products/${this.props.id}/1.jpg`}></img></div>
+                <div className="ProductCard_title">
+                    <p>{this.props.title}</p>
+                    <p>{this.props.subtitle}</p>
+                </div>
+                <p className="ProductCard_price">{this.props.currency}{this.props.price}</p>                
+                {this.props.inStore.length===0 && 
+                    <div className = "ProductCardBuyButton" 
+                        onClick = { ()=> this.props.showProduct!(this.props.id)}> 
+                        <img src="../../../assets/imgs/basket.svg"></img>               
                 </div>}
                 {/* out of stock action */}
             </div>

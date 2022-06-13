@@ -33,7 +33,8 @@ class Products extends Component<TProps, TState> {
                   title
                   subtitle                 
                   price       
-                  storeCount          
+                  storeCount       
+                  currency   
                 }              
             }
             `
@@ -64,6 +65,7 @@ class Products extends Component<TProps, TState> {
                                         title={product.title}
                                         subtitle = {product.subtitle}
                                         price = {product.price}
+                                        currency = {product.currency!}
                                         info = {product.info}                            
                                         key = {product.id}
                                         id = { product.id! }

@@ -16,7 +16,7 @@ class NavBar extends Component<IProps>{
                     <li onClick={ () => this.props.switchCurCathegory!("men")}>men</li>
                     <li onClick={ () => this.props.switchCurCathegory!("kids")}>kids</li>
                 </ul>
-                <div>logo</div>
+                <div className = "NavBar_logo"></div>
                 <div className="NavBar_GUI">
                     <BasketCurrency />
                     <BasketIcon />

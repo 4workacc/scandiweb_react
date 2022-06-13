@@ -4,11 +4,11 @@ interface IProps {
     color: string
 }
 
-class ColorIcon extends Component<IProps>{
+class ColorIcon extends Component<IProps>{    
     render(){
         return(
             <div className = "ColorIcon">
-                <div style={{width: "100%", height: "100%", color: this.props.color}}></div>
+                <div style={{width: "100%", height: "100%", backgroundColor:this.props.color}}></div>
             </div>
         )
     }

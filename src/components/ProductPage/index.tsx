@@ -29,12 +29,12 @@ class ProductPage extends Component<IProps, IState> {
                 category: "kids",
                 title: "kid RRRR11",
                 subtitle: "QQQ",
-                sizes: ["XS", "S", "M", "L"],
+                sizes: ["XS", "S", "M"],
                 colors: ["#D3D2D5", "#2B2B2B", "#0F6450"],
                 price: 10,
                 currency: "$",
-                info: "asdasdas",
-                imgs:["1.jpg"],
+                info: "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
+                imgs:["1.jpg","2.jpg","3.jpg"],
                 storeCount: 10
             },
             {
@@ -46,8 +46,8 @@ class ProductPage extends Component<IProps, IState> {
                 colors: ["#D3D2D5", "#2B2B2B", "#0F6450"],
                 price: 10,
                 currency: "$",
-                info: "asdasdas",
-                imgs:["1.jpg"],
+                info: "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
+                imgs:["1.jpg","2.jpg"],
                 storeCount: 10
             },
             {
@@ -55,12 +55,12 @@ class ProductPage extends Component<IProps, IState> {
                 category: "men",
                 title: "men RRRR31",
                 subtitle: "QQQ",
-                sizes: ["XS", "S", "M", "L"],
+                sizes: ["S", "M", "L"],
                 colors: ["#D3D2D5", "#2B2B2B", "#0F6450"],
                 price: 10,
                 currency: "$",
-                info: "asdasdas",
-                imgs:["1.jpg"],
+                info: "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
+                imgs:["1.jpg","2.jpg","3.jpg"],
                 storeCount: 10
             },
             {
@@ -72,8 +72,8 @@ class ProductPage extends Component<IProps, IState> {
                 colors: ["#D3D2D5", "#2B2B2B", "#0F6450"],
                 price: 10,
                 currency: "$",
-                info: "asdasdas",
-                imgs:["1.jpg"],
+                info: "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
+                imgs:["1.jpg","2.jpg"],
                 storeCount: 10
             },
             {
@@ -81,12 +81,12 @@ class ProductPage extends Component<IProps, IState> {
                 category: "men",
                 title: "men RRRR32",
                 subtitle: "QQQ",
-                sizes: ["XS", "S", "M", "L"],
+                sizes: ["S", "M", "L"],
                 colors: ["#D3D2D5", "#2B2B2B", "#0F6450"],
                 price: 10,
                 currency: "$",
-                info: "asdasdas",
-                imgs:["1.jpg"],
+                info: "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
+                imgs:["1.jpg", "2.jpg"],
                 storeCount: 0
             }],
             curProductData: null,     
@@ -130,7 +130,7 @@ class ProductPage extends Component<IProps, IState> {
     render() {
         return (
             <div className="ProductPage">
-                {"Product page" +this.props.curProductId}
+                {/* {"Product page" +this.props.curProductId} */}
                
                 <div className="ProductPage_main">
                 <div className="ProductPage_imgs">
@@ -152,13 +152,18 @@ class ProductPage extends Component<IProps, IState> {
                                 )
                             }
                         </div>
+                        <p>color:</p>
                         <div className = "ProductPage_main__colors">
                             {
                                 this.state.curProductData!.colors!.map ( (color: string) => 
                                     <ColorIcon color = {color}/>
                                 )
-                            }
+                            }                        
                         </div>
+                        <p>price:</p>
+                        <p className="ProductPage_main__price">{this.state.curProductData?.price} {this.state.curProductData?.currency}</p>
+                        <button className="ProductPage_main__but">ADD TO CART</button>
+                        <div className="ProductPage_main__textInfo">{this.state.curProductData!.info}</div>
                     </div>
                 </div>
             </div>
