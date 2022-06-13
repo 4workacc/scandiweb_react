@@ -6,7 +6,7 @@ export interface IProduct {
     sizes?: string[];
     colors?: string[];
     price: number;
-    currency?: "USD" | "EUR" | "GB" | "$";
+    currency?: "USD" | "EUR" | "JPY";
     info: string;
     imgs?: string[];
     storeCount: number;
@@ -37,7 +37,12 @@ export interface IStore {
     displayProductList: IProduct[] | null;
     displayProductId: number | null;
     showMiniBasket: boolean;
-    basket: IBasketProduct[] | []
+    basket: IBasketProduct[] | [],
+    selectedSize: string | null,
+    selecterColor: string | null,
+    selectedCurrency: "USD" | "EUR" | "JPY",
+    currencyUSD_EUR: 0.96,
+    currencyUSD_JPY: 133.61
 }
 
 export enum ActionTypes {

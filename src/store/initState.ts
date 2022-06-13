@@ -4,6 +4,9 @@ const initState: any = {
     curPage: "products",
     curCathegory: "women",
     displayProductId: 1,
+    selectedCurrenty: "JPY",
+    selectedSize: null,
+    selectedColor: null,
     basket: [{
         productId: 1,
         size: "S",
