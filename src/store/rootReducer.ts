@@ -9,10 +9,11 @@ const rootReducer = (state = initState, action: any) => {
                 curPage: "products"
             };       
         case "SHOW_PRODUCT" : 
+            console.log( action.payload )
             return {
                 ...state,
                 curPage: "product",
-                displayProductId: action.payload
+                displayProductId: action.payload-1
             };        
         default: 
             return state

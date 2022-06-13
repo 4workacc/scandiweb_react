@@ -14,7 +14,9 @@ interface IProps {
     client?: any
 }
 interface IState {
-    curProductData: IProduct | null
+    productBase: any,
+    curProductData: IProduct | null,    
+    curSelectedImg: string
 }
 
 
@@ -22,49 +24,115 @@ class ProductPage extends Component<IProps, IState> {
     constructor (props:IProps){
         super(props);
         this.state = {
-            curProductData: {
+            productBase: [{
                 id: 1,
-                title: "Apollo",
-                subtitle: "Running Short",
+                category: "kids",
+                title: "kid RRRR11",
+                subtitle: "QQQ",
                 sizes: ["XS", "S", "M", "L"],
                 colors: ["#D3D2D5", "#2B2B2B", "#0F6450"],
-                price: 50,
-                currency: "USD",
-                info: "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
-                storeCount: 1,
-                imgs: ["1.jpg"]
-            }
+                price: 10,
+                currency: "$",
+                info: "asdasdas",
+                imgs:["1.jpg"],
+                storeCount: 10
+            },
+            {
+                id: 2,
+                category: "kids",
+                title: "kid RRRR12",
+                subtitle: "QQQ",
+                sizes: ["XS", "S", "M", "L"],
+                colors: ["#D3D2D5", "#2B2B2B", "#0F6450"],
+                price: 10,
+                currency: "$",
+                info: "asdasdas",
+                imgs:["1.jpg"],
+                storeCount: 10
+            },
+            {
+                id: 3,
+                category: "men",
+                title: "men RRRR31",
+                subtitle: "QQQ",
+                sizes: ["XS", "S", "M", "L"],
+                colors: ["#D3D2D5", "#2B2B2B", "#0F6450"],
+                price: 10,
+                currency: "$",
+                info: "asdasdas",
+                imgs:["1.jpg"],
+                storeCount: 10
+            },
+            {
+                id: 4,
+                category: "women",
+                title: "women RRRR21",
+                subtitle: "QQQ",
+                sizes: ["XS", "S", "M", "L"],
+                colors: ["#D3D2D5", "#2B2B2B", "#0F6450"],
+                price: 10,
+                currency: "$",
+                info: "asdasdas",
+                imgs:["1.jpg"],
+                storeCount: 10
+            },
+            {
+                id: 5,
+                category: "men",
+                title: "men RRRR32",
+                subtitle: "QQQ",
+                sizes: ["XS", "S", "M", "L"],
+                colors: ["#D3D2D5", "#2B2B2B", "#0F6450"],
+                price: 10,
+                currency: "$",
+                info: "asdasdas",
+                imgs:["1.jpg"],
+                storeCount: 0
+            }],
+            curProductData: null,     
+            curSelectedImg: "1.jpg"      
         }
     };
-    fetchApolloServer () {
-     
+    fetchApolloServer () {     
         this.props.client.query({
             query:gql`    
             {       
-                products{
+                query product(id: Int){
                   id
                   category
                   title
                   subtitle                 
                   price       
-                  storeCount          
+                  storeCount
+                  colors
+                  sizes
+                  currency
+                  info
+                  imgs      
                 }              
             }
             `
-        }).then( (res:any) =>  {                        
+        }).then( (res:any) =>  {   
+            console.log( res);                     
                 this.setState({
                     curProductData: res.data
                 })
             }
         )
     }
-    componentDidMount(){
-
+    componentWillMount(){
+        // this.fetchApolloServer();
+        this.setState({
+            ...this.state,
+            curProductData: this.state.productBase[this.props.curProductId!]
+        })
     }
     render() {
         return (
             <div className="ProductPage">
                 {"Product page" +this.props.curProductId}
+               
+                <div className="ProductPage_main">
                 <div className="ProductPage_imgs">
                     {
                         this.state.curProductData!.imgs!.map ( (imgPath: string) => {
@@ -72,8 +140,7 @@ class ProductPage extends Component<IProps, IState> {
                         })
                     }
                 </div>
-                <div className="ProductPage_main">
-                    <img className="ProductPage_main__img"></img>
+                    <img className="ProductPage_main__img" src={`../../assets/imgs/products/${this.props.curProductId}/${this.state.curSelectedImg}`}></img>
                     <div className="ProductPage_main__info">
                         <h1 className="ProductPage_main__title">{this.state.curProductData!.title}</h1>
                         <h2 className="ProductPage_main__subtitle">{this.state.curProductData!.subtitle}</h2>

@@ -1,7 +1,7 @@
 import { IStore } from "../types";
 
 const initState: any = {
-    curPage: "product",
+    curPage: "products",
     curCathegory: "women",
     displayProductId: 1,
     basket: [{

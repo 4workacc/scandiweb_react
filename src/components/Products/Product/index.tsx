@@ -17,6 +17,7 @@ class Product extends Component<IProp>{
     render() {
         return (
             <div className = {"Product " + this.props.inStore}>
+                <p>{this.props.id}</p>
                 <div>img</div>
                 <p>{this.props.title}</p>
                 <p>{this.props.subtitle}</p>
