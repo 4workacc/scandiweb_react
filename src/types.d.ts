@@ -45,14 +45,7 @@ export interface IStore {
     currencyUSD_JPY: 133.61
 }
 
-export enum ActionTypes {
-    // app
-    SELECT_CATHEGORY = "SELECT_CATHEGORY",
-    SWITCH_PAGE = "SWITCH_PAGE",
-    SHOW_PRODUCT = "SHOW_PRODUCT",
-    SHOW_MINI_BASKET = "SHOW_MINI_BASKET"
-    // saga
-}
+
 
 // store: 
 // curPage: products | product | buyList

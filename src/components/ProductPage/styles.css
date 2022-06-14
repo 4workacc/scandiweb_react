@@ -198,3 +198,6 @@
 
     color: #1D1F22;
 }
+.butDisable {
+    opacity: 0.2;
+}

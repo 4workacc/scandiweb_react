@@ -7,20 +7,7 @@ const initState: any = {
     selectedCurrenty: "JPY",
     selectedSize: null,
     selectedColor: null,
-    basket: [{
-        productId: 1,
-        size: "S",
-        color: "#DDD",
-        img: "",
-        count: 2
-    },
-    {
-        productId: 1,
-        size: "S",
-        color: "#DDD",
-        img: "",
-        count: 2
-    }]
+    basket: []
 }
 
 export default initState;

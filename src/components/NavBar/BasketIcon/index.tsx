@@ -9,7 +9,7 @@ interface IProps {
 class BasketIcon extends Component<IProps> {
     render(){
         return (
-            <div className="BasketIcon">
+            <div className="BasketIcon">               
                 <div className="BasketIcon_img"></div>
                 {this.props.basket!.length >0 &&<p className="BasketIcon_Counter">{this.props.basket!.length}</p>}
             </div>

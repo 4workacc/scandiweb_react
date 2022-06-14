@@ -9,9 +9,13 @@ import { IProduct } from "../../types";
 import "./styles.css";
 import { rmSync } from "fs";
 import { gql } from "@apollo/client";
+import { ActionTypes } from "../../store/rootReducer";
 interface IProps {
     curProductId?: number| null,   
-    client?: any
+    client?: any,
+    addProductToBasket?:(n: number) => void,
+    storeSize?: string | null,
+    storeColor?: string | null
 }
 interface IState {
     productBase: any,
@@ -162,7 +166,10 @@ class ProductPage extends Component<IProps, IState> {
                         </div>
                         <p>price:</p>
                         <p className="ProductPage_main__price">{this.state.curProductData?.price} {this.state.curProductData?.currency}</p>
-                        <button className="ProductPage_main__but">ADD TO CART</button>
+                        <button 
+                            className= {"ProductPage_main__but "+ ( (this.props.storeColor !== null) && (this.props.storeSize !== null)  ? "" : "butDisable") }
+                            onClick={() => this.props.addProductToBasket!(this.props.curProductId!)}
+                            >ADD TO CART</button>
                         <div className="ProductPage_main__textInfo">{this.state.curProductData!.info}</div>
                     </div>
                 </div>
@@ -172,7 +179,18 @@ class ProductPage extends Component<IProps, IState> {
 }
 
 const mapStateToProps = (state: IStore) => ({
-    curProductId: state.displayProductId
+    curProductId: state.displayProductId,
+    storeSize: state.selectedSize,
+    storeColor: state.selecterColor
 }) 
 
-export default connect(mapStateToProps)(ProductPage);
+const dispatchAction = (dispatch: any) => {
+    return {
+        addProductToBasket:(id: number) => dispatch({
+            type: ActionTypes.ADD_PRODUCT_TO_CART,
+            payload: id
+        })
+    }
+}
+
+export default connect(mapStateToProps, dispatchAction)(ProductPage);
