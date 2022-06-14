@@ -38,16 +38,42 @@ const rootReducer = (state = initState, action: any) => {
             };
         }
         case ActionTypes.ADD_PRODUCT_TO_CART: {
-            let newBasketState = [];
+            let newBasketState: any[] = [];
             state.basket.map( (el:any) => {
                 newBasketState.push( el )
             });
-            newBasketState.push({
-                productId: action.payload,
-                size: state.selectedSize,
-                color: state.selectedColor,
-                count: 1
-            });            
+            if ( newBasketState.length === 0 ) {
+                newBasketState.push({
+                    productId: action.payload,
+                    size: state.selectedSize,
+                    color: state.selectedColor,
+                    count: 1
+                }); 
+            }
+            else {
+                let a: number = -1;
+                newBasketState.map( (el: any, ind: number) => {
+                    if (
+                        (el.productId === action.payload ) &&
+                        (el.color === state.selectedColor ) && 
+                        (el.size === state.selectedSize)
+                    ) {
+                        a = ind;
+                    }
+                });
+                if (a === -1) {
+                        newBasketState.push({
+                            productId: action.payload,
+                            size: state.selectedSize,
+                            color: state.selectedColor,
+                            count: 1
+                        }); 
+                    }                
+                else {
+                    newBasketState[a].count += 1;
+                }
+            }      
+            console.log(newBasketState)
             return {
                 ...state,
                 basket: newBasketState
