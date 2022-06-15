@@ -8,7 +8,8 @@ export enum ActionTypes {
     SHOW_MINI_BASKET = "SHOW_MINI_BASKET",
     SELECT_SIZE = "SELECT_SIZE",
     SELECT_COLOR = "SELECT_COLOR",
-    ADD_PRODUCT_TO_CART = "ADD_PRODUCT_TO_CART"
+    ADD_PRODUCT_TO_CART = "ADD_PRODUCT_TO_CART",
+    SHOW_BASKET = "SHOW_BASKET"
 }
 
 const rootReducer = (state = initState, action: any) => {
@@ -19,8 +20,7 @@ const rootReducer = (state = initState, action: any) => {
                 curCathegory: action.payload,
                 curPage: "products"
             };       
-        case ActionTypes.SHOW_PRODUCT :
-            
+        case ActionTypes.SHOW_PRODUCT :           
             return {
                 ...state,
                 curPage: "product",
@@ -83,7 +83,12 @@ const rootReducer = (state = initState, action: any) => {
             return {
                 ...state,
                 showMiniBasket: !state.showMiniBasket
-            };        
+            };    
+        case ActionTypes.SHOW_BASKET :
+            return {
+                ...state,
+                curPage: "basket"
+            }    
         default: 
             return state
     }
