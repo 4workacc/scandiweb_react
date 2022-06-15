@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { IStore } from "../../../types";
-import ProductMini from "./ProductMini";
+import ProductMini from "../../ProductMini";
 import "./styles.css";
 
 interface IProps {
@@ -14,7 +14,7 @@ class CartMini extends Component<IProps> {
             <div className="CartMini">
                  <p>My bag, 3 items</p>
                     { this.props.basket.map( (el:any) => {
-                        return <ProductMini />
+                        return <ProductMini size="small"/>
                     })}
                  <p>Total $200</p>
                 <div>

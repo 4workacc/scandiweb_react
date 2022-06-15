@@ -1,12 +1,17 @@
 import { Component } from "react";
-import ColorIcon from "../../../ProductPage/ColorIcon";
-import SizeIcon from "../../../ProductPage/SizeIcon";
+import ColorIcon from "../ProductPage/ColorIcon";
+import SizeIcon from "../ProductPage/SizeIcon";
+
 import "./styles.css";
 
-class ProductMini extends Component {
+interface IProps {
+    size: "big" | "small" 
+}
+
+class ProductMini extends Component<IProps> {
     render() {
         return (
-            <div className = "ProductMini">
+            <div className = {"ProductMini_" + this.props.size}>
                
                 <div className="ProductMini_info">
                     <p>Apollo</p>

@@ -1,9 +1,17 @@
-.ProductMini {
+.ProductMini_small {
     width: 100%;
     height: 190px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+.ProductMini_big {
+    width: 100%;
+    height: 290px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid red;
 }
 .ProductMini_info {
     height: 200px;

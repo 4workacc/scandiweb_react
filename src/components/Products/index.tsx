@@ -38,7 +38,8 @@ class Products extends Component<TProps, TState> {
                 }              
             }
             `
-        }).then( (res:any) =>  {                        
+        }).then( (res:any) =>  {      
+                console.log( res )                  
                 this.generateNewDisplayArr(res.data.products, 0)
             }
         )
