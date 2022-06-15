@@ -1,10 +1,15 @@
 .CartMini {
+    position: absolute;
     width: 325px;
+    height: 600px;
     /* height: 677px; */
     background-color: #FFF;
     border: 1px solid black;
 
     position: fixed;    
     top: 80px;
-    right: 325px;
+    left: 75%;
+}
+.CartMini_hidden {
+    display: none;
 }

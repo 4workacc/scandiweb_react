@@ -7,7 +7,8 @@ const initState: any = {
     selectedCurrenty: "JPY",
     selectedSize: null,
     selectedColor: null,
-    basket: []
+    basket: [],
+    showMiniBasket: false,
 }
 
 export default initState;

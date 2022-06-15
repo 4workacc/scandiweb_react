@@ -8,10 +8,10 @@ import { connect } from "react-redux";
 
 type TProps = {
     client: any,
-    curCathegory: string
+    curCathegory: string,
+    showMiniBasket: boolean
 }
-type TState = {
-    isShowCartMini?: boolean,
+type TState = {    
     products?: IProduct[],
     displayedArr: any[]   
 }
@@ -55,8 +55,8 @@ class Products extends Component<TProps, TState> {
 
     render() {
         return (
-            <div className = "Products">
-                { this.state.isShowCartMini && <CartMini />}
+            <div className = {this.props.showMiniBasket?"Products hideOnMiniBasket": "Products"} >
+                { this.props.showMiniBasket && <CartMini />}                
                 <h1 className="Products_CathegoryName">{this.props.curCathegory}</h1>               
                 <div className="Products_Cards">
                     { this.state.products?.map( (product: IProduct) => {                        
@@ -80,7 +80,8 @@ class Products extends Component<TProps, TState> {
 }
 
 const mapStateToProps = (state:IStore) => ({
-    curCathegory: state.curCathegory
+    curCathegory: state.curCathegory,
+    showMiniBasket: state.showMiniBasket
 })
 const dispatchProps = () =>({});
 

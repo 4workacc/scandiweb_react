@@ -78,7 +78,12 @@ const rootReducer = (state = initState, action: any) => {
                 ...state,
                 basket: newBasketState
             }
-        }        
+        };
+        case ActionTypes.SHOW_MINI_BASKET :
+            return {
+                ...state,
+                showMiniBasket: !state.showMiniBasket
+            };        
         default: 
             return state
     }

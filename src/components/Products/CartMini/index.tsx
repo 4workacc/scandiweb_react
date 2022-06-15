@@ -1,7 +1,13 @@
 import { Component } from "react";
+import { connect } from "react-redux";
+import { IStore } from "../../../types";
 import "./styles.css";
 
-class CartMini extends Component {
+interface IProps {
+    showMiniBasket?: boolean;
+    basket: any[]
+}
+class CartMini extends Component<IProps> {
     render() {
         return(
             <div className="CartMini">
@@ -11,4 +17,9 @@ class CartMini extends Component {
     }
 }
 
-export default CartMini;
+const mapStateToProps = (state: IStore) => ({
+    showMiniBasket: state.showMiniBasket,
+    basket: state.basket
+})
+
+export default connect(mapStateToProps)(CartMini);
