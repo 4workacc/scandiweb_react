@@ -4,6 +4,7 @@ import { ActionTypes } from "../../store/rootReducer";
 import { IStore } from "../../types";
 
 interface IProps {
+    selectedSize?: string | null,
     sizeLetter: string,
     setSizeAtStore?: (s: string) => void
 }
@@ -12,14 +13,14 @@ class SizeIcon extends Component<IProps>{
     render(){
         return(
             <div 
-                className = "SizeIcon"
+                className = {"SizeIcon " + ((this.props.selectedSize === this.props.sizeLetter)? "selectedSizeIcon" :"") }
                 onClick = { ()=> this.props.setSizeAtStore!(this.props.sizeLetter)}>{this.props.sizeLetter}</div>
         )
     }
 }
 
 const mapStateToProps = (state: IStore ) => ({
-    
+    selectedSize: state.selectedSize 
 });
 const dispatchAction = (dispatch: any) => {
     return {

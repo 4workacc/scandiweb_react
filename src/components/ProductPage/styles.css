@@ -201,3 +201,7 @@
 .butDisable {
     opacity: 0.2;
 }
+.selectedSizeIcon {
+    background-color: black;
+    color: #FFF;
+}
