@@ -9,6 +9,7 @@ const initState: any = {
     selectedColor: null,
     basket: [],
     showMiniBasket: false,
+    userTax: 21
 }
 
 export default initState;

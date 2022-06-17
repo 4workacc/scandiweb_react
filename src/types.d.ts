@@ -42,7 +42,8 @@ export interface IStore {
     selecterColor: string | null,
     selectedCurrency: "USD" | "EUR" | "JPY",
     currencyUSD_EUR: 0.96,
-    currencyUSD_JPY: 133.61
+    currencyUSD_JPY: 133.61,
+    userTax: num
 }
 
 
