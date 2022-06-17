@@ -33,11 +33,13 @@ class Products extends Component<TProps, TState> {
                 products {
                   id
                   category
+                  sizes
+                  colors
                   title
-                  subtitle                 
+                  subtitle         
+                  info        
                   price       
-                  storeCount       
-                  currency   
+                  storeCount                            
                 }              
             }
             `
