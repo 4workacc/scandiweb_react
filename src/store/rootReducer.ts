@@ -14,6 +14,12 @@ export enum ActionTypes {
 
 const rootReducer = (state = initState, action: any) => {
     switch ( action.type ) {
+        case "LOAD_DATA" :
+            alert("loading data!");
+            return {
+            ...state,
+            fullProductList: action.payload
+        };
         case ActionTypes.SELECT_CATHEGORY : 
             return {
                 ...state,

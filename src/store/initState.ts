@@ -3,6 +3,9 @@ import { IStore } from "../types";
 const initState: any = {
     curPage: "products",
     curCathegory: "women",
+
+    fullProductList: [],
+
     displayProductId: 1,
     selectedCurrenty: "JPY",
     selectedSize: null,

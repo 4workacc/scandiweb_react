@@ -12,21 +12,15 @@ type TProps = {
   curPage?: string;
 }
 
-const client = new ApolloClient({
-  uri: "http://localhost:4000/",
-  cache: new InMemoryCache()
-})
 class App extends Component<TProps> {
   render(){
-    return (
-      <ApolloProvider client={client}>        
+    return (           
         <div className="App">
           <NavBar />
-          { this.props.curPage === "products" && <Products client = {client}/> }
-          { this.props.curPage === "product" && <ProductPage client = {client} /> }
+          { this.props.curPage === "products" && <Products /> }
+          { this.props.curPage === "product" && <ProductPage /> }
           { this.props.curPage === "basket" && <BasketPage /> }
-        </div>
-      </ApolloProvider>
+        </div>  
     )
   } 
 }

@@ -11,8 +11,7 @@ import { rmSync } from "fs";
 import { gql } from "@apollo/client";
 import { ActionTypes } from "../../store/rootReducer";
 interface IProps {
-    curProductId?: number| null,   
-    client?: any,
+    curProductId?: number| null,      
     addProductToBasket?:(n: number) => void,
     storeSize?: string | null,
     storeColor?: string | null
@@ -97,35 +96,7 @@ class ProductPage extends Component<IProps, IState> {
             curSelectedImg: "1.jpg"      
         }
     };
-    fetchApolloServer () {     
-        this.props.client.query({
-            query:gql`    
-            {       
-                query product(id: Int){
-                  id
-                  category
-                  title
-                  subtitle                 
-                  price       
-                  storeCount
-                  colors
-                  sizes
-                  currency
-                  info
-                  imgs      
-                }              
-            }
-            `
-        }).then( (res:any) =>  {   
-            console.log( res);                     
-                this.setState({
-                    curProductData: res.data
-                })
-            }
-        )
-    }
-    componentWillMount(){
-        // this.fetchApolloServer();
+    componentWillMount(){        
         this.setState({
             ...this.state,
             curProductData: this.state.productBase[this.props.curProductId!]
