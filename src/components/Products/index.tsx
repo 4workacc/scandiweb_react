@@ -64,8 +64,7 @@ class Products extends Component<TProps, TState> {
                             return (< Product 
                                         title={product.title}
                                         subtitle = {product.subtitle}
-                                        price = {product.price}
-                                        currency = {product.currency!}
+                                        price = {product.price}                                        
                                         info = {product.info}                            
                                         key = {product.id}
                                         id = { product.id! }
