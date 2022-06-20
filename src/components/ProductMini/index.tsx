@@ -47,9 +47,9 @@ class ProductMini extends Component<IProps> {
                 </div>
                 <div className={"ProductMini_panel_"+this.props.size}>
                     <div className={"ProductMini_counter_"+this.props.size}>
-                        <div onClick = { () => { this.props.changeCount!(this.props.basketElement?.productId!, 1)}}>+</div>
+                        <div onClick = { () => { this.props.changeCount!(this.props.basketElement?.basketId!, 1)}}>+</div>
                         <p>{this.props.basketElement?.count}</p>
-                        <div onClick = { () => { this.props.changeCount!(this.props.basketElement?.productId!, -1)}}>-</div>
+                        <div onClick = { () => { this.props.changeCount!(this.props.basketElement?.basketId!, -1)}}>-</div>
                     </div>
                     <div className={"ProductMini_img_"+this.props.size}>
                         <img src={`../assets/imgs/products/${this.props.basketElement!.productId}/1.jpg`}/>

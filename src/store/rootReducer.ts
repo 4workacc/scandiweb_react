@@ -1,3 +1,4 @@
+import { copyFile } from "fs";
 import initState from "./initState";
 
 export enum ActionTypes {
@@ -44,35 +45,35 @@ const rootReducer = (state = initState, action: any) => {
                 selectedSize: action.payload
             };
         }
-        case ActionTypes.ADD_PRODUCT_TO_CART: {
-            console.log( action.payload);
+        case ActionTypes.ADD_PRODUCT_TO_CART: {            
             let newBasketState: any[] = [];
-            state.basket.map( (el:any) => {
-                newBasketState.push( el )
+            state.basket.map( (el:any, ind: number) => {
+                newBasketState.push( {...el, basketId: ind} )
             });          
-             let a: number = -1;
-                newBasketState.map( (el: any, ind: number) => {
-                    if (
-                        (el.productId === action.payload.id ) &&
-                        (el.color === action.payload.selectedColor ) && 
-                        (el.size === action.payload.selectedSize)
-                    ) {
-                        a = ind;
-                    }
-                });
-                if (a === -1) {
-                        newBasketState.push({
-                            productId: action.payload.id,
-                            size: action.payload.selectedSize,
-                            color: action.payload.selectedColor,
-                            price: action.payload.price,
-                            count: 1
-                        }); 
-                    }                
-                else {
-                    newBasketState[a].count += 1;
-                }            
-           
+            console.log( newBasketState)
+            let a: number = -1;
+            newBasketState.map( (el: any, ind: number) => {
+                if (
+                    (el.productId === action.payload.id ) &&
+                    (el.color === action.payload.selectedColor ) && 
+                    (el.size === action.payload.selectedSize)
+                ) {
+                    a = ind;
+                }
+            });
+            if (a === -1) {
+                newBasketState.push({
+                    basketId: newBasketState.length+1,
+                    productId: action.payload.id,
+                    size: action.payload.selectedSize,
+                    color: action.payload.selectedColor,
+                    price: action.payload.price,
+                    count: 1
+                }); 
+            }                
+            else {
+                newBasketState[a].count += 1;
+            }          
             return {
                 ...state,
                 basket: newBasketState
@@ -88,11 +89,11 @@ const rootReducer = (state = initState, action: any) => {
                 ...state,
                 curPage: "basket"
             }    
-        case ActionTypes.CHANGE_BASKET_COUNT:
-            alert(action.payload.val)
+        case ActionTypes.CHANGE_BASKET_COUNT:   
+            console.log(state.basket)         
             let newBasket:any[] = [];
             state.basket.map( (el: any) => {
-                if ( el.productId === action.payload.basketElementId) {
+                if ( el.basketId === action.payload.basketElementId) {
                     let newCoutn = el.count + action.payload.val;
                     el.count = newCoutn;
                     if ( newCoutn > 0 ) {

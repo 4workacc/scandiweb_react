@@ -18,6 +18,7 @@ export interface IBuyItem {
 }
 
 export interface IBasketProduct{
+    basketId: number,
     productId: number,
     size: string,
     color: string,
