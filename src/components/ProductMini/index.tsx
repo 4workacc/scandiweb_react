@@ -18,6 +18,9 @@ interface IProps {
 }
 
 class ProductMini extends Component<IProps> {
+    componentDidMount(){
+        console.log( this.props.basketElement)
+    }
     render() {
         return (
             <div className = {"ProductMini_" + this.props.size}>               
@@ -28,13 +31,17 @@ class ProductMini extends Component<IProps> {
                     <p className={"ProductMini_info_label_" + this.props.size}>Size:</p>
                     <div className={"ProductMini_info__sizes_" +this.props.size} >                       
                         {this.props.fullProductList![this.props.basketElement!.productId].sizes.map( (el: any) => {
-                            return <SizeIcon sizeLetter={el} isSelected={true}/>
+                            return <SizeIcon 
+                                        sizeLetter={el} 
+                                        isSelected={ this.props.basketElement?.size === el}/>
                         })} 
                     </div>
                     <p className={"ProductMini_info_label_" + this.props.size}>Color:</p>
                     <div className={"ProductMini_info__colors_"+this.props.size}>                        
                         {this.props.fullProductList![this.props.basketElement!.productId].colors.map( (el: any) => {
-                            return  <ColorIcon color={el} />
+                            return  <ColorIcon 
+                                        color={el} 
+                                        isSelected = {this.props.basketElement?.color === el}/>
                         })} 
                     </div>
                 </div>

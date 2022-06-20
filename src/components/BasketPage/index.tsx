@@ -14,7 +14,7 @@ interface IProps {
 
 interface IState {
     fullProductPrice: number,
-    userTaxSum: number,
+    userTaxSum: number
 }
 
 class BasketPage extends Component<IProps, IState> {
@@ -22,7 +22,7 @@ class BasketPage extends Component<IProps, IState> {
         super(props);
         this.state = {
             fullProductPrice: 0,
-            userTaxSum: 0
+            userTaxSum: 0      
         }
     }
 

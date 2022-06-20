@@ -1,7 +1,4 @@
 import { Component } from "react";
-import { connect } from "react-redux";
-import { ActionTypes } from "../../store/rootReducer";
-import { IStore } from "../../types";
 
 interface IProps {
     selectedSize?: string | null,
@@ -20,18 +17,6 @@ class SizeIcon extends Component<IProps>{
     }
 }
 
-const mapStateToProps = (state: IStore ) => ({
-    selectedSize: state.selectedSize 
-});
-const dispatchAction = (dispatch: any) => {
-    return {
-        setSizeAtStore:(size: string)=> dispatch({
-            type: ActionTypes.SELECT_SIZE,
-            payload: size
-        })
-    }
-}
 
-
-export default connect(mapStateToProps, dispatchAction)(SizeIcon);
+export default SizeIcon;
 

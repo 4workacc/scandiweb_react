@@ -5,13 +5,14 @@ import { IStore } from "../../types";
 
 interface IProps {
     color: string,
-    setColorAtStore?:(s: string) => void
+    setColorAtStore?:(s: string) => void,
+    isSelected?: boolean
 }
 
 class ColorIcon extends Component<IProps>{    
     render(){
         return(
-            <div className = "ColorIcon">
+            <div className = {"ColorIcon "+(this.props.isSelected? "selectedColorIcon":"")}>
                 <div 
                     style={{width: "100%", height: "100%", backgroundColor:this.props.color}}
                     onClick = { ()=> this.props.setColorAtStore!(this.props.color)}
@@ -25,12 +26,12 @@ const mapStateToProps = (state: IStore ) => ({
     
 });
 const dispatchAction = (dispatch: any) => {
-    return {
-        setColorAtStore:(size: string)=> dispatch({
-            type: ActionTypes.SELECT_COLOR,
-            payload: size
-        })
-    }
+    // return {
+    //     setColorAtStore:(size: string)=> dispatch({
+    //         type: ActionTypes.SELECT_COLOR,
+    //         payload: size
+    //     })
+    // }
 }
 
 

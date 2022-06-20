@@ -169,7 +169,7 @@
 
     color: #1D1F22;
 }
-.SizeIcon:hover {
+.SizeIconSelected {
     border: 1px solid greenyellow;
 }
 .ProductPage_main__colors {
@@ -182,7 +182,7 @@
     border: 1px solid lightcyan;
     margin-right: 10px;
 }
-.ColorIcon:hover{
+.ColorIconSelected{
 
 }
 .ProductPage_main__price {
@@ -204,4 +204,7 @@
 .selectedSizeIcon {
     background-color: black;
     color: #FFF;
+}
+.selectedColorIcon {
+    border: 2px solid red;
 }

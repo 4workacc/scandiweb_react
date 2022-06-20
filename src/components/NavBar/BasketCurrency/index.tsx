@@ -45,13 +45,13 @@ class BasketCurrency extends Component<IProps, IState>{
                             this.setState({
                                 isShowDropDown: false
                             });
-                        }}>E EUR</p>
+                        }}>€ EUR</p>
                     <p onClick = { ()=>{ 
                         this.props.selectCurrency("JPY");
                         this.setState({
                             isShowDropDown: false
                             });
-                        }}>Y JPY</p>
+                        }}>¥ JPY</p>
                 </div>
             </div>
         )

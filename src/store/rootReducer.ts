@@ -45,6 +45,7 @@ const rootReducer = (state = initState, action: any) => {
             };
         }
         case ActionTypes.ADD_PRODUCT_TO_CART: {
+            console.log( action.payload);
             let newBasketState: any[] = [];
             state.basket.map( (el:any) => {
                 newBasketState.push( el )
@@ -52,8 +53,8 @@ const rootReducer = (state = initState, action: any) => {
             if ( newBasketState.length === 0 ) {
                 newBasketState.push({
                     productId: action.payload.id,
-                    size: state.selectedSize,
-                    color: state.selectedColor,
+                    size: action.payload.selectedSize,
+                    color: action.payload.selectedColor,
                     price: action.payload.price,
                     count: 1
                 }); 
@@ -72,8 +73,8 @@ const rootReducer = (state = initState, action: any) => {
                 if (a === -1) {
                         newBasketState.push({
                             productId: action.payload.id,
-                            size: state.selectedSize,
-                            color: state.selectedColor,
+                            size: action.payload.selectedSize,
+                            color: action.payload.selectedColor,
                             price: action.payload.price,
                             count: 1
                         }); 
