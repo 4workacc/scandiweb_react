@@ -1,0 +1,210 @@
+@font-face {
+    font-family: "Raleway";
+    src: url("../../assets/fonts/Raleway-Regular.ttf");
+}
+@font-face {
+    font-family: "Roboto";
+    src: url("../../assets/fonts/Roboto-Regular.ttf");
+}
+@font-face {
+    font-family: "Roboto Condensed";
+    src: url("../../assets/fonts/RobotoCondensed-Regular.ttf");
+}
+@font-face {
+    font-family: "Source Sans Pr";
+    src: url("../../assets/fonts/SourceSansPro-Regular.ttf");
+}
+.ProductPage{
+    width: 1200px;
+    height: 595px;
+    box-shadow: 0 0 1px 1px lightcyan;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.ProductPage_main {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.ProductPage_imgs{
+    width: 120px;
+    height: 505px;
+
+    margin-left: 50px;
+
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    
+    gap: 40px;
+}
+.ProductPage_imgs>img {
+    
+    width: 80px;
+    height: 80px;    
+}
+.ProductPage_main__info {
+    width: 292px;
+    height: 595px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;    
+    justify-content: space-between;
+}
+.ProductPage_main__info>h1 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 27px;
+    /* identical to box height, or 90% */
+
+    display: flex;
+    align-items: center;
+
+    color: #1D1F22;
+}
+.ProductPage_main__info>h2 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 27px;
+    /* identical to box height, or 90% */
+
+    display: flex;
+    align-items: center;
+
+    color: #1D1F22;
+}
+.ProductPage_main__info>p {
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #1D1F22;
+}
+
+.ProductPage_main__img {
+    width: 610px;
+    height: 511px;
+    /* margin-right: 100px; */
+}
+.ProductPage_main__sizes, .ProductPage_main__colors {
+    width: 100%;
+    height: 45px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.ProductPage_main__textInfo{
+    height: 103px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 159.96%;
+    color: #1D1F22;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.ProductPage_main__but{
+    width: 100%;
+    height: 50px;
+    border: none;
+    background-color: #5ECE7B;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 120%;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    justify-content: center;
+    color: #FFFFFF;
+}
+.SizeIcon{
+   width: 63px;
+   height: 45px;
+   border: 1px solid black;
+   font-family: "Source Sans Pro"; 
+   font-size: 16px;
+   font-weight: 400;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    /* identical to box height, or 112% */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.05em;
+
+    color: #1D1F22;
+}
+.SizeIconSelected {
+    border: 1px solid greenyellow;
+}
+.ProductPage_main__colors {
+    justify-content: flex-start;
+    
+}
+.ColorIcon{
+    width: 36px;
+    height: 36px;
+    border: 1px solid lightcyan;
+    margin-right: 10px;
+}
+.ColorIconSelected{
+
+}
+.ProductPage_main__price {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 18px;
+    /* or 75% */
+
+    display: flex;
+    align-items: center;
+
+    color: #1D1F22;
+}
+.butDisable {
+    opacity: 0.2;
+}
+.selectedSizeIcon {
+    background-color: black;
+    color: #FFF;
+}
+.selectedColorIcon {
+    border: 2px solid red;
+}

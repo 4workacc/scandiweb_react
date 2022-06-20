@@ -1,0 +1,40 @@
+.Products {
+    width: 100%;
+    /* height: 1432px; */
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    align-items: unset;
+    justify-content: flex-start;
+    
+}
+.Products_CathegoryName {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 160%;
+    display: flex;
+    align-items: center;
+    color: #1D1F22;
+    text-align: left;
+}
+.Products_Cards {
+    height: 980px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.showMiniBasket {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    background-color: lightblue;
+}
+.hideOnMiniBasket {
+   opacity: 0.3;
+}

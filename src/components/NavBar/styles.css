@@ -1,0 +1,48 @@
+.Navbar {
+    display: flex;
+    width: 100%;
+    height: 78px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.NavBar_Cathegories {
+    width: 202px;
+    display: flex;
+    flex: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.NavBar_Cathegories li {
+    width: 70px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    list-style: none;
+    font-family: Raleway;
+    font-style: "bold";
+    font-size: 16px;
+    line-height: 40px;    
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 20px;
+
+}    
+.navBarSelectedCathegory{
+    border-bottom: 3px solid #5ECE7B;
+    color: #5ECE7B;
+
+}
+.NavBar_GUI {
+    width: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.NavBar_logo{
+    width: 41px;
+    height: 41px;
+    background-image: url("../../assets/imgs/logo_transparent.svg");
+}
