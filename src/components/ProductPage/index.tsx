@@ -45,7 +45,7 @@ class ProductPage extends Component<IProps, IState> {
                 <div className="ProductPage_imgs">
                     {
                         this.state.curProductData!.imgs!.map ( (imgPath: string) => {
-                            return <img src={`../../assets/imgs/products/${this.props.curProductId}/${imgPath}`}></img>
+                            return <img src={`../../assets/imgs/products/${this.props.curProductId}/${imgPath}`} key={Math.random()*20}></img>
                         })
                     }
                 </div>
@@ -57,7 +57,7 @@ class ProductPage extends Component<IProps, IState> {
                         <div className="ProductPage_main__sizes">
                             {
                                 this.state.curProductData!.sizes!.map( (size: string) => 
-                                <SizeIcon sizeLetter={size} />
+                                <SizeIcon sizeLetter={size} key={Math.random()*20+30} />
                                 )
                             }
                         </div>
@@ -65,7 +65,7 @@ class ProductPage extends Component<IProps, IState> {
                         <div className = "ProductPage_main__colors">
                             {
                                 this.state.curProductData!.colors!.map ( (color: string) => 
-                                    <ColorIcon color = {color}/>
+                                    <ColorIcon color = {color} key={Math.random()+"1"}/>
                                 )
                             }                        
                         </div>
@@ -73,7 +73,7 @@ class ProductPage extends Component<IProps, IState> {
                         <p className="ProductPage_main__price">{this.state.curProductData?.price} {this.state.curProductData?.currency}</p>
                         <button 
                             className= {"ProductPage_main__but "+ ( (this.props.storeColor !== null) && (this.props.storeSize !== null)  ? "" : "butDisable") }
-                            onClick={() => this.props.addProductToBasket!(this.props.curProductId!, 10)}
+                            onClick={() => this.props.addProductToBasket!(this.props.curProductId!, this.state.curProductData?.price!)}
                             >ADD TO CART</button>
                         <div className="ProductPage_main__textInfo">{this.state.curProductData!.info}</div>
                     </div>
