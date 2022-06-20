@@ -104,11 +104,11 @@ const rootReducer = (state = initState, action: any) => {
             state.basket.map( (el: any) => {
                 if ( el.productId === action.payload.basketElementId) {
                     let newCoutn = el.count + action.payload.val;
+                    el.count = newCoutn;
                     if ( newCoutn > 0 ) {
-                        el.count = newCoutn;
+                        newBasket.push(el);
                     }
-                };
-                newBasket.push(el);
+                };                
             })
             return {
                 ...state,

@@ -22,13 +22,13 @@ class ProductMini extends Component<IProps> {
         return (
             <div className = {"ProductMini_" + this.props.size}>               
                 <div className={"ProductMini_info_" + this.props.size}>
-                    <p className={"ProductMini_info_title_" + this.props.size}>{}</p>
-                    <p className={"ProductMini_info_subtitle_" + this.props.size}>Running short</p>
+                    <p className={"ProductMini_info_title_" + this.props.size}>{this.props.fullProductList![this.props.basketElement!.productId]!.title}</p>
+                    <p className={"ProductMini_info_subtitle_" + this.props.size}>{this.props.fullProductList![this.props.basketElement!.productId]!.subtitle}</p>
                     <p className={"ProductMini_info__price_"+this.props.size}>{`${returnCurrency(this.props.currency!)}${this.props.fullProductList[this.props.basketElement!.productId].price*this.props.currencyCoef!}`}</p>
-                    <p className={"ProductMini_info_label_" + this.props.size}>Size</p>
+                    <p className={"ProductMini_info_label_" + this.props.size}>Size:</p>
                     <div className={"ProductMini_info__sizes_" +this.props.size} >                       
                         {this.props.fullProductList![this.props.basketElement!.productId].sizes.map( (el: any) => {
-                            return <SizeIcon sizeLetter={el}/>
+                            return <SizeIcon sizeLetter={el} isSelected={true}/>
                         })} 
                     </div>
                     <p className={"ProductMini_info_label_" + this.props.size}>Color:</p>
