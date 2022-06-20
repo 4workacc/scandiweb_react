@@ -1,12 +1,14 @@
 import { Component } from "react";
 import { connect } from "react-redux";
+import { ActionTypes } from "../../../store/rootReducer";
 import { IStore } from "../../../types";
 import ProductMini from "../../ProductMini";
 import "./styles.css";
 
 interface IProps {
     showMiniBasket?: boolean;
-    basket: any[]
+    basket: any[],
+    routeToBasket?:() => void
 }
 class CartMini extends Component<IProps> {
     calcCountOfItems(){
@@ -33,7 +35,7 @@ class CartMini extends Component<IProps> {
                     })}
                  <p>{`Total $${this.calcUSDPriceOfItems()}`}</p>               
                     <div className = "CartMini_GUI">
-                        <p>View bag</p>
+                        <p onClick = { () => {this.props.routeToBasket!()}}>View bag</p>
                         <p>CHECK OUT</p>
                     </div>
                 </div>
@@ -47,4 +49,12 @@ const mapStateToProps = (state: IStore) => ({
     basket: state.basket
 })
 
-export default connect(mapStateToProps)(CartMini);
+const dispatchAction = (dispatch: any ) => {
+    return {
+        routeToBasket: () => dispatch({
+            type: ActionTypes.SHOW_BASKET
+        })
+    }
+}
+
+export default connect(mapStateToProps, dispatchAction)(CartMini);

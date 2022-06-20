@@ -13,10 +13,9 @@ interface IProps {
     addProductToBasket?:(n: number, p: number) => void,
     storeSize?: string | null,
     storeColor?: string | null,
-    fullProductlist?: IProduct[]
+    fullProductlist?: IProduct[] | null
 }
-interface IState {
-    productBase: any,
+interface IState {   
     curProductData: IProduct | null,    
     curSelectedImg: string
 }
@@ -25,80 +24,16 @@ interface IState {
 class ProductPage extends Component<IProps, IState> {
     constructor (props:IProps){
         super(props);
-        this.state = {
-            productBase: [{
-                id: 1,
-                category: "kids",
-                title: "kid RRRR11",
-                subtitle: "QQQ",
-                sizes: ["XS", "S", "M"],
-                colors: ["#D3D2D5", "#2B2B2B", "#0F6450"],
-                price: 10,
-                currency: "$",
-                info: "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
-                imgs:["1.jpg","2.jpg","3.jpg"],
-                storeCount: 10
-            },
-            {
-                id: 2,
-                category: "kids",
-                title: "kid RRRR12",
-                subtitle: "QQQ",
-                sizes: ["XS", "S", "M", "L"],
-                colors: ["#D3D2D5", "#2B2B2B", "#0F6450"],
-                price: 10,
-                currency: "$",
-                info: "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
-                imgs:["1.jpg","2.jpg"],
-                storeCount: 10
-            },
-            {
-                id: 3,
-                category: "men",
-                title: "men RRRR31",
-                subtitle: "QQQ",
-                sizes: ["S", "M", "L"],
-                colors: ["#D3D2D5", "#2B2B2B", "#0F6450"],
-                price: 10,
-                currency: "$",
-                info: "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
-                imgs:["1.jpg","2.jpg","3.jpg"],
-                storeCount: 10
-            },
-            {
-                id: 4,
-                category: "women",
-                title: "women RRRR21",
-                subtitle: "QQQ",
-                sizes: ["XS", "S", "M", "L"],
-                colors: ["#D3D2D5", "#2B2B2B", "#0F6450"],
-                price: 10,
-                currency: "$",
-                info: "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
-                imgs:["1.jpg","2.jpg"],
-                storeCount: 10
-            },
-            {
-                id: 5,
-                category: "men",
-                title: "men RRRR32",
-                subtitle: "QQQ",
-                sizes: ["S", "M", "L"],
-                colors: ["#D3D2D5", "#2B2B2B", "#0F6450"],
-                price: 10,
-                currency: "$",
-                info: "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
-                imgs:["1.jpg", "2.jpg"],
-                storeCount: 0
-            }],
+        this.state = {           
             curProductData: null,     
             curSelectedImg: "1.jpg"      
         }
     };
     componentWillMount(){        
+        
         this.setState({
             ...this.state,
-            curProductData: this.state.productBase[this.props.curProductId!]
+            curProductData: this.props.fullProductlist![this.props.curProductId!]
         })
     }
     render() {

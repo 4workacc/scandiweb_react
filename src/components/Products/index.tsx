@@ -3,14 +3,16 @@ import { IProduct, IStore } from "../../types";
 import Product from "./Product";
 import CartMini from "./CartMini";
 import "./styles.css";
-import { ApolloClient, gql, InMemoryCache } from "@apollo/client";
+import { ApolloClient, gql, InMemoryCache, throwServerError } from "@apollo/client";
 import { connect } from "react-redux";
+import { ActionTypes } from "../../store/rootReducer";
 
 type TProps = {    
     curCathegory: string,
     showMiniBasket: boolean,
     fullProductList?: any[] | null,
-    loadDataToServer:(a: any[]) => void
+    loadDataToServer:(a: any[]) => void,
+    switchMiniCart:()=>void
 }
 type TState = {    
     products?: IProduct[],
@@ -39,7 +41,8 @@ class Products extends Component<TProps, TState> {
                   subtitle         
                   info        
                   price       
-                  storeCount                            
+                  storeCount,
+                  imgs                            
                 }              
             }
             `
@@ -55,7 +58,10 @@ class Products extends Component<TProps, TState> {
 
     render() {
         return (
-            <div className = {this.props.showMiniBasket?"Products hideOnMiniBasket": "Products"} >
+            <div 
+                className = {this.props.showMiniBasket?"Products hideOnMiniBasket": "Products"} 
+                onClick = { ()=> { this.props.showMiniBasket && this.props.switchMiniCart()}} 
+            >
                 { this.props.showMiniBasket && <CartMini />}                
                 <h1 className="Products_CathegoryName">{this.props.curCathegory}</h1>               
                 <div className="Products_Cards">
@@ -88,7 +94,11 @@ const dispatchProps = ( dispatch: any) =>{
         loadDataToServer:(products: any[]) => dispatch({
             type: "LOAD_DATA",
             payload: products
-        })
+        }),    
+        switchMiniCart: () => dispatch({
+            type: ActionTypes.SHOW_MINI_BASKET
+        }),            
+        
     }
     
 };

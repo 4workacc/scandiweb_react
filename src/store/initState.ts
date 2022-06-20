@@ -7,7 +7,7 @@ const initState: any = {
     fullProductList: [],
 
     displayProductId: 1,
-    selectedCurrency: "EUR",
+    selectedCurrency: "USD",
     selectedSize: null,
     selectedColor: null,
     basket: [],
