@@ -1,9 +1,12 @@
 .ProductMini_small {
-    width: 100%;
+    width: 293px;
     height: 190px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid lightblue;
+    border-top: 1px solid lightblue;
 }
 .ProductMini_info_small {
     height: 200px;
@@ -13,31 +16,69 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    border: 1px solid black;
 }
-.ProductMini_info_small p {
+.ProductMini_info_small>p {
+    margin: 0;
+    padding: 0;
+}
+.ProductMini_info_title_small {
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 300;
-    font-size: 14px;
-    line-height: 100%;
-    /* or 26px */
-
+    font-size: 16px;
+    line-height: 160%;
+   
     display: flex;
     align-items: center;
+
+    color: #1D1F22;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
 }
-.ProductMini_counter_small {
-    width: 10%;
-    height: 100%;
+.ProductMini_panel_small {
+    width: 121px;
+    height: 190px;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid black;
+}
+.ProductMini_info__price_small {    
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 160%;
+
+    text-align: right;
+
+    color: #1D1F22;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+.ProductMini_counter_small {
+    width: 25px;
+    height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 .ProductMini_img_small{
-    width: 40%;
-    height: 100%;   
-    border: 1px solid black; 
+    width: 121px;
+    height: 190px;   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.ProductMini_img_small>img{
+    width: 100%;
+    height: auto;
 }
 .ProductMini_info__sizes_small, .ProductMini_info__colors_small, .ProductMini_info__price_small{
     width: 100%;
@@ -59,7 +100,6 @@
     border-bottom: 1px solid red;
     border-top: 1px solid #E5E5E5;
     border-bottom: 1px solid #E5E5E5;
-
 }
 .ProductMini_info_big{
     display: flex;

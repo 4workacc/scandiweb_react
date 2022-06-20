@@ -14,8 +14,7 @@ export enum ActionTypes {
 
 const rootReducer = (state = initState, action: any) => {
     switch ( action.type ) {
-        case "LOAD_DATA" :
-            alert("loading data!");
+        case "LOAD_DATA" :            
             return {
             ...state,
             fullProductList: action.payload
@@ -50,9 +49,10 @@ const rootReducer = (state = initState, action: any) => {
             });
             if ( newBasketState.length === 0 ) {
                 newBasketState.push({
-                    productId: action.payload,
+                    productId: action.payload.id,
                     size: state.selectedSize,
                     color: state.selectedColor,
+                    price: action.payload.price,
                     count: 1
                 }); 
             }
@@ -60,7 +60,7 @@ const rootReducer = (state = initState, action: any) => {
                 let a: number = -1;
                 newBasketState.map( (el: any, ind: number) => {
                     if (
-                        (el.productId === action.payload ) &&
+                        (el.productId === action.payload.id ) &&
                         (el.color === state.selectedColor ) && 
                         (el.size === state.selectedSize)
                     ) {
@@ -69,9 +69,10 @@ const rootReducer = (state = initState, action: any) => {
                 });
                 if (a === -1) {
                         newBasketState.push({
-                            productId: action.payload,
+                            productId: action.payload.id,
                             size: state.selectedSize,
                             color: state.selectedColor,
+                            price: action.payload.price,
                             count: 1
                         }); 
                     }                

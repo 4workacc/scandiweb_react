@@ -12,7 +12,7 @@ import { gql } from "@apollo/client";
 import { ActionTypes } from "../../store/rootReducer";
 interface IProps {
     curProductId?: number| null,      
-    addProductToBasket?:(n: number) => void,
+    addProductToBasket?:(n: number, p: number) => void,
     storeSize?: string | null,
     storeColor?: string | null
 }
@@ -139,7 +139,7 @@ class ProductPage extends Component<IProps, IState> {
                         <p className="ProductPage_main__price">{this.state.curProductData?.price} {this.state.curProductData?.currency}</p>
                         <button 
                             className= {"ProductPage_main__but "+ ( (this.props.storeColor !== null) && (this.props.storeSize !== null)  ? "" : "butDisable") }
-                            onClick={() => this.props.addProductToBasket!(this.props.curProductId!)}
+                            onClick={() => this.props.addProductToBasket!(this.props.curProductId!, 10)}
                             >ADD TO CART</button>
                         <div className="ProductPage_main__textInfo">{this.state.curProductData!.info}</div>
                     </div>
@@ -157,9 +157,12 @@ const mapStateToProps = (state: IStore) => ({
 
 const dispatchAction = (dispatch: any) => {
     return {
-        addProductToBasket:(id: number) => dispatch({
+        addProductToBasket:(id: number, price: number) => dispatch({
             type: ActionTypes.ADD_PRODUCT_TO_CART,
-            payload: id
+            payload: {
+                id: id,
+                price: price
+            }
         })
     }
 }
