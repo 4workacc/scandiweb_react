@@ -19,7 +19,7 @@ class ProductMini extends Component<IProps> {
                 <div className={"ProductMini_info_" + this.props.size}>
                     <p className={"ProductMini_info_title_" + this.props.size}>{}</p>
                     <p className={"ProductMini_info_subtitle_" + this.props.size}>Running short</p>
-                    <p className={"ProductMini_info__price_"+this.props.size}>{`$${50}`}</p>
+                    <p className={"ProductMini_info__price_"+this.props.size}>{`$${this.props.fullProductList[this.props.basketElement!.productId].price}`}</p>
                     <p className={"ProductMini_info_label_" + this.props.size}>Size</p>
                     <div className={"ProductMini_info__sizes_" +this.props.size} >                       
                         {this.props.fullProductList![this.props.basketElement!.productId].sizes.map( (el: any) => {
@@ -35,9 +35,9 @@ class ProductMini extends Component<IProps> {
                 </div>
                 <div className={"ProductMini_panel_"+this.props.size}>
                     <div className={"ProductMini_counter_"+this.props.size}>
-                        <div>^</div>
-                        <p>1</p>
-                        <div>_</div>
+                        <div>+</div>
+                        <p>{this.props.basketElement?.count}</p>
+                        <div>-</div>
                     </div>
                     <div className={"ProductMini_img_"+this.props.size}>
                         <img src={`../assets/imgs/products/${this.props.basketElement!.productId}/1.jpg`}/>

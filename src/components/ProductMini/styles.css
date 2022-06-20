@@ -165,9 +165,10 @@
     align-items: center;
 }
 .ProductMini_img_big{
+    padding-top: 20px;
     width: 200px;
-    height: 288px;
-    border: 1px solid black;
+    height: auto;
+    overflow: hidden;
 }
 .ProductMini_panel_big {
     width: 269px;

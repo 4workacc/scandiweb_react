@@ -35,6 +35,38 @@ class BasketPage extends Component<IProps, IState> {
             userTaxSum: fprice*this.props.tax!
         })
     }
+    sumCountOfProducts(){
+        let sum = 0;
+        this.props.basket?.map((el: any) => {
+            sum += el.count;
+        })
+        return sum;
+    }
+    sumPriceOfProducts(){
+        let sum = 0;
+        this.props.basket?.map((el: any) => {
+            sum += el.count*el.price;
+        })
+        return sum;
+    }
+    sumPriceOfProductsWithTax(){
+        let sum = 0;
+        this.props.basket?.map((el: any) => {
+            sum += el.count*el.price;
+        })
+        return sum*this.props.tax!/100;
+    };
+    returnCurrency(cur: string): string{    
+        switch ( cur ) {
+            case "USD": 
+                return "$";
+            case "JPY" : 
+                return "¥";
+            case "EUR" : 
+                return "€";
+            default: return "$"
+        }       
+    }
     render() {
         return (
             <div className="BasketPage">                
@@ -43,13 +75,13 @@ class BasketPage extends Component<IProps, IState> {
                     <h1>Cart</h1>
                     {
                         this.props.basket!.map( (el: any) => {
-                            return <ProductMini size="big"/>
+                            return <ProductMini size="big" basketElement={el}/>
                         })
                     }
-                    <h2>Tax: {this.props.tax}% : <b>{this.props.currency!}{this.state.userTaxSum!}</b></h2>
-                    <h2>Quantity: <b>{this.props.basket!.length}</b></h2>
-                    <h2>Total:  {this.props.currency!} <b>{this.state.fullProductPrice}</b></h2>
-                    <h2>To pay:  {this.props.currency!}<b>{this.state.fullProductPrice - this.state.userTaxSum}</b></h2>
+                    <h2>Tax: {this.props.tax}% : <b>{this.returnCurrency(this.props.currency!)}{this.sumPriceOfProductsWithTax()}</b></h2>
+                    <h2>Quantity: <b>{this.sumCountOfProducts()}</b></h2>
+                    <h2>Total:  {this.returnCurrency(this.props.currency!)} <b>{this.sumPriceOfProducts()}</b></h2>
+                    <h2>To pay:  {this.returnCurrency(this.props.currency!)}<b>{this.sumPriceOfProducts() - this.sumPriceOfProductsWithTax()}</b></h2>
                     </>
                 }              
                 {
