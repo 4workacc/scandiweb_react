@@ -43,7 +43,8 @@ export interface IStore {
     selectedCurrency: "USD" | "EUR" | "JPY",
     currencyUSD_EUR: 0.96,
     currencyUSD_JPY: 133.61,
-    userTax: num
+    userTax: num,
+    currencyCoef: number
 }
 
 

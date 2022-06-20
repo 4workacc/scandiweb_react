@@ -4,11 +4,13 @@ import { ActionTypes } from "../../../store/rootReducer";
 import { IStore } from "../../../types";
 import ProductMini from "../../ProductMini";
 import "./styles.css";
+import { returnCurrency } from "../../../utils";
 
 interface IProps {
     showMiniBasket?: boolean;
     basket: any[],
-    routeToBasket?:() => void
+    routeToBasket?:() => void,
+    currency?: string | null
 }
 class CartMini extends Component<IProps> {
     calcCountOfItems(){
@@ -33,7 +35,7 @@ class CartMini extends Component<IProps> {
                     { this.props.basket.length >0 && this.props.basket.map( (el:any) => {
                         return <ProductMini size="small" basketElement={el}/>
                     })}
-                 <p>{`Total $${this.calcUSDPriceOfItems()}`}</p>               
+                 <p>{`Total ${returnCurrency(this.props.currency!)}${this.calcUSDPriceOfItems()}`}</p>               
                     <div className = "CartMini_GUI">
                         <p onClick = { () => {this.props.routeToBasket!()}}>View bag</p>
                         <p>CHECK OUT</p>
@@ -46,7 +48,8 @@ class CartMini extends Component<IProps> {
 
 const mapStateToProps = (state: IStore) => ({
     showMiniBasket: state.showMiniBasket,
-    basket: state.basket
+    basket: state.basket,
+    currency: state.selectedCurrency
 })
 
 const dispatchAction = (dispatch: any ) => {

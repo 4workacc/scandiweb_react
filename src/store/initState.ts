@@ -1,5 +1,3 @@
-import { IStore } from "../types";
-
 const initState: any = {
     curPage: "products",
     curCathegory: "women",
@@ -8,6 +6,7 @@ const initState: any = {
 
     displayProductId: 1,
     selectedCurrency: "USD",
+    currencyCoef: 1,
     selectedSize: null,
     selectedColor: null,
     basket: [],

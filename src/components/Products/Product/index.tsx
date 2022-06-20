@@ -12,6 +12,7 @@ interface IProp {
     inStore: string,
     selectedCurrency?: string,
     showProduct?:(id: number) => void;
+    currencyCoef?: number
 }
 
 class Product extends Component<IProp>{
@@ -35,7 +36,7 @@ class Product extends Component<IProp>{
                         <p>{this.props.title}</p>
                         <p>{this.props.subtitle}</p>
                     </div>
-                    <p className="ProductCard_price">{this.returnCurrency(this.props.selectedCurrency!)}{this.props.price}</p>                 
+                    <p className="ProductCard_price">{this.returnCurrency(this.props.selectedCurrency!)}{this.props.price*this.props.currencyCoef!}</p>                 
                         {
                             this.props.inStore.length===0 && <div className = "ProductCardBuyButton" 
                                 onClick = { ()=> this.props.showProduct!(this.props.id)}> 
@@ -55,7 +56,8 @@ class Product extends Component<IProp>{
 }
 
 const mapStateToProps = (state: IStore ) => ({
-    selectedCurrency: state.selectedCurrency
+    selectedCurrency: state.selectedCurrency,
+    currencyCoef: state.currencyCoef
 })
 const dispatchProps = (dispatch: any) => {
     return {

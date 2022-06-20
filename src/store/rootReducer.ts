@@ -10,7 +10,8 @@ export enum ActionTypes {
     SELECT_COLOR = "SELECT_COLOR",
     ADD_PRODUCT_TO_CART = "ADD_PRODUCT_TO_CART",
     SHOW_BASKET = "SHOW_BASKET",
-    CHANGE_BASKET_COUNT = "CHANGE_BASKET_COUNT"
+    CHANGE_BASKET_COUNT = "CHANGE_BASKET_COUNT",
+    SELECT_CURRENCY = "SELECT_CURRENCY"
 }
 
 const rootReducer = (state = initState, action: any) => {
@@ -113,6 +114,19 @@ const rootReducer = (state = initState, action: any) => {
                 ...state,
                 basket: newBasket
             }
+        case ActionTypes.SELECT_CURRENCY:
+            let newCoef = 0;
+            switch( action.payload ) {
+                case "USD" : newCoef = 1; break;
+                case "EUR" : newCoef = 1.05; break;
+                case "JPY" : newCoef = 0.007419; break; 
+            }       
+            return {
+                ...state,
+                currencyCoef: newCoef,
+                selectedCurrency: action.payload
+            }
+            
         default: 
             return state
     }

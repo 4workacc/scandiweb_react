@@ -8,12 +8,15 @@ import { IProduct } from "../../types";
 
 import "./styles.css";
 import { ActionTypes } from "../../store/rootReducer";
+import { returnCurrency } from "../../utils";
 interface IProps {
     curProductId?: number| null,      
     addProductToBasket?:(n: number, p: number) => void,
     storeSize?: string | null,
     storeColor?: string | null,
-    fullProductlist?: IProduct[] | null
+    fullProductlist?: IProduct[] | null,
+    currencyCoef?: number,
+    currency?: string | null
 }
 interface IState {   
     curProductData: IProduct | null,    
@@ -70,7 +73,7 @@ class ProductPage extends Component<IProps, IState> {
                             }                        
                         </div>
                         <p>price:</p>
-                        <p className="ProductPage_main__price">{this.state.curProductData?.price} {this.state.curProductData?.currency}</p>
+                        <p className="ProductPage_main__price">{returnCurrency(this.props.currency!)+""+ this.state.curProductData?.price!*this.props.currencyCoef!} {this.state.curProductData?.currency}</p>
                         <button 
                             className= {"ProductPage_main__but "+ ( (this.props.storeColor !== null) && (this.props.storeSize !== null)  ? "" : "butDisable") }
                             onClick={() => this.props.addProductToBasket!(this.props.curProductId!, this.state.curProductData?.price!)}
@@ -87,7 +90,9 @@ const mapStateToProps = (state: IStore) => ({
     curProductId: state.displayProductId,
     storeSize: state.selectedSize,
     storeColor: state.selecterColor,
-    fullProductlist: state.fullProductList
+    fullProductlist: state.fullProductList,
+    currencyCoef: state.currencyCoef,
+    currency: state.selectedCurrency
 }) 
 
 const dispatchAction = (dispatch: any) => {

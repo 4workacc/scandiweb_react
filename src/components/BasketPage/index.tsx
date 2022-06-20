@@ -8,7 +8,8 @@ import "./styles.css";
 interface IProps {
     basket?: any[],
     tax?: number,
-    currency?: "USD" | "EUR" | "JPY"
+    currency?: "USD" | "EUR" | "JPY",
+    currencyCoef?: number
 }
 
 interface IState {
@@ -78,10 +79,10 @@ class BasketPage extends Component<IProps, IState> {
                             return <ProductMini size="big" basketElement={el}/>
                         })
                     }
-                    <h2>Tax: {this.props.tax}% : <b>{this.returnCurrency(this.props.currency!)}{this.sumPriceOfProductsWithTax()}</b></h2>
+                    <h2>Tax: {this.props.tax}% : <b>{this.returnCurrency(this.props.currency!)}{(this.sumPriceOfProductsWithTax()*this.props.currencyCoef!).toFixed(3)}</b></h2>
                     <h2>Quantity: <b>{this.sumCountOfProducts()}</b></h2>
-                    <h2>Total:  {this.returnCurrency(this.props.currency!)} <b>{this.sumPriceOfProducts()}</b></h2>
-                    <h2>To pay:  {this.returnCurrency(this.props.currency!)}<b>{this.sumPriceOfProducts() - this.sumPriceOfProductsWithTax()}</b></h2>
+                    <h2>Total:  {this.returnCurrency(this.props.currency!)} <b>{(this.sumPriceOfProducts()*this.props.currencyCoef!).toFixed(3)}</b></h2>
+                    <h2>To pay:  {this.returnCurrency(this.props.currency!)}<b>{((this.sumPriceOfProducts() - this.sumPriceOfProductsWithTax())*this.props.currencyCoef!).toFixed(3)}</b></h2>
                     </>
                 }              
                 {
@@ -95,7 +96,8 @@ class BasketPage extends Component<IProps, IState> {
 const mapStateToProps = ( state: IStore ) => ({
     currency: state.selectedCurrency,
     basket: state.basket,
-    tax: state.userTax
+    tax: state.userTax,
+    currencyCoef: state.currencyCoef
 })
 
 export default connect(mapStateToProps)(BasketPage);

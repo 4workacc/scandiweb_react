@@ -2,6 +2,7 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { ActionTypes } from "../../store/rootReducer";
 import { IBasketProduct, IProduct, IStore } from "../../types";
+import { returnCurrency } from "../../utils";
 import ColorIcon from "../ProductPage/ColorIcon";
 import SizeIcon from "../ProductPage/SizeIcon";
 
@@ -11,7 +12,9 @@ interface IProps {
     size: "big" | "small",
     basketElement?: IBasketProduct,
     fullProductList?: any,
-    changeCount?:(n: number, q: number) => void
+    changeCount?:(n: number, q: number) => void,
+    currencyCoef?: number,
+    currency?: string
 }
 
 class ProductMini extends Component<IProps> {
@@ -21,7 +24,7 @@ class ProductMini extends Component<IProps> {
                 <div className={"ProductMini_info_" + this.props.size}>
                     <p className={"ProductMini_info_title_" + this.props.size}>{}</p>
                     <p className={"ProductMini_info_subtitle_" + this.props.size}>Running short</p>
-                    <p className={"ProductMini_info__price_"+this.props.size}>{`$${this.props.fullProductList[this.props.basketElement!.productId].price}`}</p>
+                    <p className={"ProductMini_info__price_"+this.props.size}>{`${returnCurrency(this.props.currency!)}${this.props.fullProductList[this.props.basketElement!.productId].price*this.props.currencyCoef!}`}</p>
                     <p className={"ProductMini_info_label_" + this.props.size}>Size</p>
                     <div className={"ProductMini_info__sizes_" +this.props.size} >                       
                         {this.props.fullProductList![this.props.basketElement!.productId].sizes.map( (el: any) => {
@@ -51,7 +54,9 @@ class ProductMini extends Component<IProps> {
 }
 
 const mapStateToProps = (state: IStore ) => ({
-    fullProductList: state.fullProductList
+    fullProductList: state.fullProductList,
+    currencyCoef: state.currencyCoef,
+    currency: state.selectedCurrency
 })
 
 const dispatchAction = (dispatch: any) => {
