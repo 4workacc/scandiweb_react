@@ -1,9 +1,52 @@
 .BasketCurrency {
     width: 153px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.NavBar_Currency {
+.NavBar_Currency {  
     border: none;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 160%;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 100px;
+}
+.basketCurrencyDisable {
+    display: none;
+}
+.selectCurrencyButton{
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+
+}
+.selectCurrencyButton {    
+    margin-top: 15px;
+    background-image: url("../../../assets/imgs/dropArrow.svg");
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.BasketCurrency_GUI{
+    width: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.NavBar_Currency p {
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 500;
@@ -11,13 +54,8 @@
     line-height: 160%;
     /* identical to box height, or 29px */
 
-    display: flex;
-    align-items: flex-end;
-
-    /* --c-black */
+    text-align: right;
 
     color: #1D1F22;
-}
-option {
-    border: none;
+    text-decoration: none;
 }
