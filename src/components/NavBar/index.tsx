@@ -6,6 +6,7 @@ import BasketCurrency from "./BasketCurrency";
 import BasketIcon from "./BasketIcon";
 import "./styles.css";
 interface IProps {
+    curCathegory?: string,
     switchCurCathegory?(a:string): void,
     routeToBasket?:()=>void
 }
@@ -14,9 +15,9 @@ class NavBar extends Component<IProps>{
         return (
             <div className = "Navbar">
                 <ul className = "NavBar_Cathegories">
-                    <li onClick={ () => this.props.switchCurCathegory!("women")}>women</li>
-                    <li onClick={ () => this.props.switchCurCathegory!("men")}>men</li>
-                    <li onClick={ () => this.props.switchCurCathegory!("kids")}>kids</li>
+                    <li onClick={ () => this.props.switchCurCathegory!("women")} className={this.props.curCathegory === "women"?`navBarSelectedCathegory`:"x"}>women</li>
+                    <li onClick={ () => this.props.switchCurCathegory!("men")} className={this.props.curCathegory === "men"?`navBarSelectedCathegory`:"x"}>men</li>
+                    <li onClick={ () => this.props.switchCurCathegory!("kids")} className={this.props.curCathegory === "kids"?`navBarSelectedCathegory`:"x"}>kids</li>
                 </ul>
                 <div className = "NavBar_logo" onClick = { () => this.props.routeToBasket!()}></div>
                 <div className="NavBar_GUI">
