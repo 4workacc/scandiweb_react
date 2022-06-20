@@ -7,14 +7,13 @@ import SizeIcon from "./SizeIcon";
 import { IProduct } from "../../types";
 
 import "./styles.css";
-import { rmSync } from "fs";
-import { gql } from "@apollo/client";
 import { ActionTypes } from "../../store/rootReducer";
 interface IProps {
     curProductId?: number| null,      
     addProductToBasket?:(n: number, p: number) => void,
     storeSize?: string | null,
-    storeColor?: string | null
+    storeColor?: string | null,
+    fullProductlist?: IProduct[]
 }
 interface IState {
     productBase: any,
@@ -152,7 +151,8 @@ class ProductPage extends Component<IProps, IState> {
 const mapStateToProps = (state: IStore) => ({
     curProductId: state.displayProductId,
     storeSize: state.selectedSize,
-    storeColor: state.selecterColor
+    storeColor: state.selecterColor,
+    fullProductlist: state.fullProductList
 }) 
 
 const dispatchAction = (dispatch: any) => {

@@ -9,7 +9,8 @@ export enum ActionTypes {
     SELECT_SIZE = "SELECT_SIZE",
     SELECT_COLOR = "SELECT_COLOR",
     ADD_PRODUCT_TO_CART = "ADD_PRODUCT_TO_CART",
-    SHOW_BASKET = "SHOW_BASKET"
+    SHOW_BASKET = "SHOW_BASKET",
+    CHANGE_BASKET_COUNT = "CHANGE_BASKET_COUNT"
 }
 
 const rootReducer = (state = initState, action: any) => {
@@ -79,8 +80,8 @@ const rootReducer = (state = initState, action: any) => {
                 else {
                     newBasketState[a].count += 1;
                 }
-            }      
-            console.log(newBasketState)
+            }    
+           
             return {
                 ...state,
                 basket: newBasketState
@@ -96,6 +97,22 @@ const rootReducer = (state = initState, action: any) => {
                 ...state,
                 curPage: "basket"
             }    
+        case ActionTypes.CHANGE_BASKET_COUNT:
+            alert(action.payload.val)
+            let newBasket:any[] = [];
+            state.basket.map( (el: any) => {
+                if ( el.productId === action.payload.basketElementId) {
+                    let newCoutn = el.count + action.payload.val;
+                    if ( newCoutn > 0 ) {
+                        el.count = newCoutn;
+                    }
+                };
+                newBasket.push(el);
+            })
+            return {
+                ...state,
+                basket: newBasket
+            }
         default: 
             return state
     }

@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { connect } from "react-redux";
+import { ActionTypes } from "../../store/rootReducer";
 import { IBasketProduct, IProduct, IStore } from "../../types";
 import ColorIcon from "../ProductPage/ColorIcon";
 import SizeIcon from "../ProductPage/SizeIcon";
@@ -9,7 +10,8 @@ import "./styles.css";
 interface IProps {
     size: "big" | "small",
     basketElement?: IBasketProduct,
-    fullProductList?: any
+    fullProductList?: any,
+    changeCount?:(n: number, q: number) => void
 }
 
 class ProductMini extends Component<IProps> {
@@ -35,9 +37,9 @@ class ProductMini extends Component<IProps> {
                 </div>
                 <div className={"ProductMini_panel_"+this.props.size}>
                     <div className={"ProductMini_counter_"+this.props.size}>
-                        <div>+</div>
+                        <div onClick = { () => { this.props.changeCount!(this.props.basketElement?.productId!, 1)}}>+</div>
                         <p>{this.props.basketElement?.count}</p>
-                        <div>-</div>
+                        <div onClick = { () => { this.props.changeCount!(this.props.basketElement?.productId!, -1)}}>-</div>
                     </div>
                     <div className={"ProductMini_img_"+this.props.size}>
                         <img src={`../assets/imgs/products/${this.props.basketElement!.productId}/1.jpg`}/>
@@ -52,4 +54,16 @@ const mapStateToProps = (state: IStore ) => ({
     fullProductList: state.fullProductList
 })
 
-export default connect(mapStateToProps)(ProductMini);
+const dispatchAction = (dispatch: any) => {
+    return {
+        changeCount:(id: number, val: number) => dispatch({
+            type: ActionTypes.CHANGE_BASKET_COUNT,
+            payload: {
+                basketElementId: id,
+                val: val
+            }
+        })
+    }
+}
+
+export default connect(mapStateToProps, dispatchAction)(ProductMini);
