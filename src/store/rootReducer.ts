@@ -49,23 +49,13 @@ const rootReducer = (state = initState, action: any) => {
             let newBasketState: any[] = [];
             state.basket.map( (el:any) => {
                 newBasketState.push( el )
-            });
-            if ( newBasketState.length === 0 ) {
-                newBasketState.push({
-                    productId: action.payload.id,
-                    size: action.payload.selectedSize,
-                    color: action.payload.selectedColor,
-                    price: action.payload.price,
-                    count: 1
-                }); 
-            }
-            else {
-                let a: number = -1;
+            });          
+             let a: number = -1;
                 newBasketState.map( (el: any, ind: number) => {
                     if (
                         (el.productId === action.payload.id ) &&
-                        (el.color === state.selectedColor ) && 
-                        (el.size === state.selectedSize)
+                        (el.color === action.payload.selectedColor ) && 
+                        (el.size === action.payload.selectedSize)
                     ) {
                         a = ind;
                     }
@@ -81,8 +71,7 @@ const rootReducer = (state = initState, action: any) => {
                     }                
                 else {
                     newBasketState[a].count += 1;
-                }
-            }    
+                }            
            
             return {
                 ...state,
