@@ -19,6 +19,8 @@ type TState = {
     displayedArr: any[]   
 }
 
+// test graphql server  https://github.com/4workacc/scandiweb_node
+
 const client = new ApolloClient({
     uri: "http://localhost:4000/",
     cache: new InMemoryCache()
