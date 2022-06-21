@@ -32,7 +32,17 @@ const rootReducer = (state = initState, action: any) => {
                 ...state,
                 curPage: "product",
                 displayProductId: action.payload-1
-            };       
+            };      
+        case ActionTypes.SHOW_MINI_BASKET :
+            return {
+                ...state,
+                showMiniBasket: !state.showMiniBasket
+            };    
+        case ActionTypes.SHOW_BASKET :
+            return {
+                ...state,
+                curPage: "basket"
+            }   
         case ActionTypes.SELECT_COLOR :            
             return {
                 ...state,
@@ -62,7 +72,7 @@ const rootReducer = (state = initState, action: any) => {
             });
             if (a === -1) {
                 newBasketState.push({
-                    basketId: newBasketState.length+1,
+                    basketId: state.basket.length+1,
                     productId: action.payload.id,
                     size: action.payload.selectedSize,
                     color: action.payload.selectedColor,
@@ -78,31 +88,28 @@ const rootReducer = (state = initState, action: any) => {
                 basket: newBasketState
             }
         };
-        case ActionTypes.SHOW_MINI_BASKET :
-            return {
-                ...state,
-                showMiniBasket: !state.showMiniBasket
-            };    
-        case ActionTypes.SHOW_BASKET :
-            return {
-                ...state,
-                curPage: "basket"
-            }    
-        case ActionTypes.CHANGE_BASKET_COUNT:   
-            console.log(state.basket)         
+          
+        case ActionTypes.CHANGE_BASKET_COUNT:                       
             let newBasket:any[] = [];          
-            state.basket.map( (el: any) => {
-                let isPositive = true;
-                if ( el.basketId === action.payload.basketElementId) {
-                    let newCoutn = el.count + action.payload.val;                    
+            state.basket.map( (el: any) => {               
+                if ( el.basketId === action.payload.basketElementId) {                                       
+                    let newCoutn = el.count + action.payload.val;                                      
                     if ( newCoutn > 0 ) {
-                        el.count = newCoutn;
-                        isPositive = false;
+                       newBasket.push({
+                        basketId: el.basketId,
+                        productId: el.productId,
+                        size: el.size,
+                        color: el.color,
+                        price: el.price,
+                        count: newCoutn
+                       })                       
                     }
-                };                
-                if ( isPositive ) {
-                    newBasket.push(el);
                 }
+                else {
+                    newBasket.push({
+                        ...el
+                       })  
+                }                              
             })
             return {
                 ...state,

@@ -3,7 +3,7 @@ import { IProduct, IStore } from "../../types";
 import Product from "./Product";
 import CartMini from "./CartMini";
 import "./styles.css";
-import { ApolloClient, gql, InMemoryCache, throwServerError } from "@apollo/client";
+import { ApolloClient, gql, InMemoryCache } from "@apollo/client";
 import { connect } from "react-redux";
 import { ActionTypes } from "../../store/rootReducer";
 

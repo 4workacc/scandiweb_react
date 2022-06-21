@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { connect } from "react-redux";
 import { ActionTypes } from "../../store/rootReducer";
-import { IBasketProduct, IProduct, IStore } from "../../types";
+import { IBasketProduct, IStore } from "../../types";
 import { returnCurrency } from "../../utils";
 import ColorIcon from "../ProductPage/ColorIcon";
 import SizeIcon from "../ProductPage/SizeIcon";
