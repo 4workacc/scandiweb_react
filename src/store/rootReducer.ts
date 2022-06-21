@@ -1,4 +1,3 @@
-import { copyFile } from "fs";
 import initState from "./initState";
 
 export enum ActionTypes {
@@ -91,15 +90,19 @@ const rootReducer = (state = initState, action: any) => {
             }    
         case ActionTypes.CHANGE_BASKET_COUNT:   
             console.log(state.basket)         
-            let newBasket:any[] = [];
+            let newBasket:any[] = [];          
             state.basket.map( (el: any) => {
+                let isPositive = true;
                 if ( el.basketId === action.payload.basketElementId) {
-                    let newCoutn = el.count + action.payload.val;
-                    el.count = newCoutn;
+                    let newCoutn = el.count + action.payload.val;                    
                     if ( newCoutn > 0 ) {
-                        newBasket.push(el);
+                        el.count = newCoutn;
+                        isPositive = false;
                     }
                 };                
+                if ( isPositive ) {
+                    newBasket.push(el);
+                }
             })
             return {
                 ...state,

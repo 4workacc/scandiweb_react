@@ -9,6 +9,7 @@ import { IProduct } from "../../types";
 import "./styles.css";
 import { ActionTypes } from "../../store/rootReducer";
 import { returnCurrency } from "../../utils";
+
 interface IProps {
     curProductId?: number| null,      
     addProductToBasket?:(n: number, p: number, s: string, c: string) => void,
@@ -69,10 +70,16 @@ class ProductPage extends Component<IProps, IState> {
                         })
                     }
                 </div>
-                    <img className="ProductPage_main__img" src={`../../assets/imgs/products/${this.props.curProductId}/${this.state.curSelectedImg}`}></img>
+                    <img 
+                        className="ProductPage_main__img" 
+                        src={`../../assets/imgs/products/${this.props.curProductId}/${this.state.curSelectedImg}`}></img>
                     <div className="ProductPage_main__info">
-                        <h1 className="ProductPage_main__title">{this.state.curProductData!.title}</h1>
-                        <h2 className="ProductPage_main__subtitle">{this.state.curProductData!.subtitle}</h2>
+                        <h1 
+                            className="ProductPage_main__title">
+                            {this.state.curProductData!.title}</h1>
+                        <h2 
+                            className="ProductPage_main__subtitle">
+                            {this.state.curProductData!.subtitle}</h2>
                         <p>size:</p>
                         <div className="ProductPage_main__sizes">
                             {
@@ -118,8 +125,6 @@ class ProductPage extends Component<IProps, IState> {
 
 const mapStateToProps = (state: IStore) => ({
     curProductId: state.displayProductId,
-    // storeSize: state.selectedSize,
-    // storeColor: state.selecterColor,
     fullProductlist: state.fullProductList,
     currencyCoef: state.currencyCoef,
     currency: state.selectedCurrency

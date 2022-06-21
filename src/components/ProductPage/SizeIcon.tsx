@@ -12,7 +12,9 @@ class SizeIcon extends Component<IProps>{
         return(
             <div 
                 className = {"SizeIcon " + (this.props.isSelected? "selectedSizeIcon" :"") }
-                onClick = { ()=> this.props.setSizeAtStore!(this.props.sizeLetter)}>{this.props.sizeLetter}</div>
+                onClick = { 
+                    ()=> this.props.setSizeAtStore!(this.props.sizeLetter)}>
+                        {this.props.sizeLetter}</div>
         )
     }
 }

@@ -46,8 +46,7 @@ class Products extends Component<TProps, TState> {
                 }              
             }
             `
-        }).then( (res:any) =>  {                         
-                // this.generateNewDisplayArr(res.data.products, 0);
+        }).then( (res:any) =>  {
                 this.props.loadDataToServer(res.data.products);
             }
         )
@@ -63,7 +62,9 @@ class Products extends Component<TProps, TState> {
                 onClick = { ()=> { this.props.showMiniBasket && this.props.switchMiniCart()}} 
             >
                 { this.props.showMiniBasket && <CartMini />}                
-                <h1 className="Products_CathegoryName">{this.props.curCathegory}</h1>               
+                <h1 
+                    className="Products_CathegoryName">
+                        {this.props.curCathegory}</h1>               
                 <div className="Products_Cards">
                     { this.props.fullProductList!.map( (product: IProduct) => {                        
                         if ( product.category === this.props.curCathegory) {
@@ -89,6 +90,7 @@ const mapStateToProps = (state:IStore) => ({
     fullProductList: state.fullProductList,
     showMiniBasket: state.showMiniBasket
 })
+
 const dispatchProps = ( dispatch: any) =>{
     return {
         loadDataToServer:(products: any[]) => dispatch({
@@ -97,10 +99,8 @@ const dispatchProps = ( dispatch: any) =>{
         }),    
         switchMiniCart: () => dispatch({
             type: ActionTypes.SHOW_MINI_BASKET
-        }),            
-        
-    }
-    
+        }),                    
+    }    
 };
 
 export default connect(mapStateToProps, dispatchProps)(Products);

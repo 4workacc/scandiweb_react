@@ -4,7 +4,6 @@ import BasketPage from './components/BasketPage';
 import NavBar from './components/NavBar';
 import Products from './components/Products';
 import ProductPage from './components/ProductPage';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { IStore } from './types';
 import { connect } from 'react-redux';
 

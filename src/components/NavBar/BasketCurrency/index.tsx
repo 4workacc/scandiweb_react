@@ -25,15 +25,14 @@ class BasketCurrency extends Component<IProps, IState>{
             <div className="BasketCurrency">
                 <div className="BasketCurrency_GUI">
                     <p>{returnCurrency(this.props.currency!)}</p>
-                    <button className="selectCurrencyButton" onClick = {()=>{ this.setState({...this.state, isShowDropDown: !this.state.isShowDropDown})}}>             
-                        <div className="selectCurrencyButton_img"></div>           
+                    <button 
+                        className="selectCurrencyButton" 
+                        onClick = {()=>{ this.setState({...this.state, isShowDropDown: !this.state.isShowDropDown})}}>             
+                            <div className="selectCurrencyButton_img"></div>           
                     </button>
                 </div>
                 <div className = {`NavBar_Currency ${this.state.isShowDropDown?"":"basketCurrencyDisable"}` } 
-                   >
-                    {/* <button className="selectCurrencyButton" onClick = {()=>{ this.setState({...this.state, isShowDropDown: !this.state.isShowDropDown})}}>             
-                        <span className="selectCurrencyButton_img" />           
-                    </button> */}
+                   >                   
                     <p onClick = { ()=>{ 
                             this.props.selectCurrency("USD"); 
                             this.setState({

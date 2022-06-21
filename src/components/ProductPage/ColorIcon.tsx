@@ -1,7 +1,4 @@
 import { Component } from "react";
-import { connect } from "react-redux";
-import { ActionTypes } from "../../store/rootReducer";
-import { IStore } from "../../types";
 
 interface IProps {
     color: string,
@@ -22,18 +19,5 @@ class ColorIcon extends Component<IProps>{
     }
 }
 
-const mapStateToProps = (state: IStore ) => ({
-    
-});
-const dispatchAction = (dispatch: any) => {
-    // return {
-    //     setColorAtStore:(size: string)=> dispatch({
-    //         type: ActionTypes.SELECT_COLOR,
-    //         payload: size
-    //     })
-    // }
-}
-
-
-export default connect(mapStateToProps, dispatchAction) (ColorIcon);
+export default ColorIcon;
 
