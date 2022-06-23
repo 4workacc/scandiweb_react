@@ -32,7 +32,7 @@ class Product extends Component<IProp>{
                         className="ProductCard_price">{returnCurrency(this.props.selectedCurrency!)}
                         {this.props.price*this.props.currencyCoef!}</p>                 
                         {
-                            this.props.inStore.length===0 && <div className = "ProductCardBuyButton" 
+                            this.props.inStore.length===0 && <div className = "ProductCardBuyButton" id="b"
                                 onClick = { ()=> this.props.showProduct!(this.props.id)}> 
                                 <img src="../../../assets/imgs/basket.svg"></img>                                       
                               </div>

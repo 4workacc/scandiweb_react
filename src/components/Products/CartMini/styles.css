@@ -1,12 +1,9 @@
 .CartMini {
+    opacity: 1;
     position: absolute;
     width: 325px;
-    /* height: 600px; */
-    /* height: 677px; */
     background-color: #FFF;
-
     box-shadow: 0 0 1px 1px lightblue;
-
     position: fixed;    
     top: 80px;
     left: 75%;
